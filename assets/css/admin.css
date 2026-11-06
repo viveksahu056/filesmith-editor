@@ -1,0 +1,2985 @@
+/* ============================================================
+   FileSmith Editor — full stylesheet
+   Supports light + dark via CSS variables.
+
+   - LIGHT = default (no class on wrapper/modal needed)
+   - DARK  = applied via class "fsed-theme-dark" on .fsed-wrapper,
+             .fsed-modal, OR any ancestor (body).
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Tokens: LIGHT theme (default)
+   ------------------------------------------------------------ */
+.fsed-wrapper,
+.fsed-modal {
+	--r-bg: #ffffff;
+	--r-bar: #f6f7f7;
+	--r-panel: #f6f7f7;
+	--r-input: #ffffff;
+	--r-line: #dcdcde;
+	--r-line-soft: #f0f0f1;
+	--r-text: #1d2327;
+	--r-muted: #646970;
+	--r-hot: #d63638;
+	--r-accent: #2271b1;
+	--r-accent-hover: #135e96;
+	--r-danger: #d63638;
+	--r-ok: #00a32a;
+	--r-warn: #996800;
+	--r-editor-bg: #ffffff;
+	--r-editor-text: #1d2327;
+	--r-overlay-bg: rgba(255, 255, 255, 0.85);
+	--r-overlay-text: #1d2327;
+	--r-tab-bg: #e9eaeb;
+	--r-tab-active-bg: #ffffff;
+	--r-tree-file: #1d2327;
+	--r-tree-file-active: #1d2327;
+	--r-tree-file-active-bg: #f0f6fc;
+	--r-tree-file-active-border: #2271b1;
+	--r-badge-bg: #f0f0f1;
+	--r-badge-text: #50575e;
+	--r-badge-ok-bg: #edfaef;
+	--r-badge-ok-text: #00a32a;
+	--r-badge-warn-bg: #fcf9e8;
+	--r-badge-warn-text: #7c5700;
+	--r-icon-btn: #2271b1;
+	--r-icon-btn-danger: #d63638;
+	--r-menu-hover-bg: #f0f6fc;
+	--r-row-border: #f0f0f1;
+	--r-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+	--font-display: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--font-code: Consolas, Monaco, "Andale Mono", monospace;
+}
+
+/* ------------------------------------------------------------
+   Tokens: DARK theme
+   ------------------------------------------------------------ */
+.fsed-theme-dark.fsed-wrapper,
+.fsed-theme-dark.fsed-modal,
+.fsed-theme-dark .fsed-wrapper,
+.fsed-theme-dark .fsed-modal {
+	--r-bg: #11151c;
+	--r-bar: #181e28;
+	--r-panel: #141922;
+	--r-input: #1f2631;
+	--r-line: #283142;
+	--r-line-soft: #222a38;
+	--r-text: #dbe3ee;
+	--r-muted: #8795a9;
+	--r-hot: #ff7a45;
+	--r-accent: #3b74d8;
+	--r-accent-hover: #4a83e6;
+	--r-danger: #d63638;
+	--r-ok: #6fe0a0;
+	--r-warn: #f0c866;
+	--r-editor-bg: #1e1e1e;
+	--r-editor-text: #d4d4d4;
+	--r-overlay-bg: rgba(30, 30, 30, 0.85);
+	--r-overlay-text: #d4d4d4;
+	--r-tab-bg: #202938;
+	--r-tab-active-bg: #11151c;
+	--r-tree-file: #a9c4ee;
+	--r-tree-file-active: #ffffff;
+	--r-tree-file-active-bg: #1d2a40;
+	--r-tree-file-active-border: #5f9bff;
+	--r-badge-bg: #232d3d;
+	--r-badge-text: #c5c5c5;
+	--r-badge-ok-bg: #173325;
+	--r-badge-ok-text: #6fe0a0;
+	--r-badge-warn-bg: #44391a;
+	--r-badge-warn-text: #f0c866;
+	--r-icon-btn: #7fb0ff;
+	--r-icon-btn-danger: #ff8b8b;
+	--r-menu-hover-bg: #26303f;
+	--r-row-border: #222a38;
+	--r-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ------------------------------------------------------------
+   Wrapper + toolbar
+   ------------------------------------------------------------ */
+.fsed-notice[hidden] { display: none; }
+
+.fsed-wrapper {
+	color: var(--r-text);
+	background: var(--r-bg);
+	border: 1px solid var(--r-line);
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: var(--r-shadow);
+	font-family: var(--font-display);
+}
+
+.fsed-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px 18px;
+	padding: 14px 18px;
+	background: var(--r-bar);
+	border-bottom: 1px solid var(--r-line);
+}
+
+.fsed-toolbar .fsed-toolbar-main .fsed-editing {
+	margin: 0;
+	color: var(--r-text);
+	font-family: var(--font-display);
+	font-size: 1.125rem;
+	font-weight: 700;
+}
+
+.fsed-toolbar .fsed-toolbar-main .fsed-file-path {
+	margin: 2px 0;
+	color: var(--r-muted);
+	font-size: 0.875rem;
+}
+
+.fsed-toolbar .fsed-toolbar-side,
+.fsed-toolbar .fsed-header-actions,
+.fsed-toolbar .fsed-selectors {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.fsed-selectors .fsed-select-field {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--r-muted);
+	font-size: 0.8125rem;
+}
+
+.fsed-selectors .fsed-select-field select {
+	min-height: 32px;
+	padding: 4px 28px 4px 8px;
+	color: var(--r-text);
+	background: var(--r-input);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238795a9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 6px center;
+	background-size: 14px 14px;
+	border: 1px solid var(--r-line);
+	border-radius: 6px;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+/* Toolbar buttons */
+.fsed-toolbar .fsed-header-actions .button,
+.fsed-toolbar .fsed-header-actions .button.button-primary {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 12px;
+	color: var(--r-text);
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1;
+	background: transparent;
+	border: 1px solid var(--r-line);
+	border-radius: 6px;
+	cursor: pointer;
+	box-shadow: none;
+	text-shadow: none;
+}
+
+.fsed-toolbar .fsed-header-actions .button:hover:not(:disabled) {
+	color: var(--r-text);
+	border-color: var(--r-text);
+	background: transparent;
+}
+
+.fsed-toolbar .fsed-header-actions .button:focus-visible:not(:disabled) {
+	outline: 2px solid var(--r-accent);
+	outline-offset: 1px;
+}
+
+.fsed-toolbar .fsed-header-actions .button:disabled {
+	opacity: 0.45;
+	cursor: default;
+}
+
+.fsed-toolbar .fsed-header-actions .button.button-primary {
+	color: #fff;
+	background: var(--r-accent);
+	border-color: var(--r-accent);
+}
+
+.fsed-toolbar .fsed-header-actions .button.button-primary:hover:not(:disabled) {
+	color: #fff;
+	background: var(--r-accent-hover);
+	border-color: var(--r-accent-hover);
+}
+
+.fsed-toolbar .fsed-header-actions .button.button-primary:disabled {
+	color: var(--r-text);
+	background: transparent;
+	border-color: var(--r-line);
+}
+
+.fsed-toolbar .fsed-header-actions .button .icon {
+	width: 1.25em;
+	height: 1.25em;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.75;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	flex: 0 0 auto;
+}
+
+/* ------------------------------------------------------------
+   Layout
+   ------------------------------------------------------------ */
+.fsed-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 250px;
+}
+
+.fsed-layout .fsed-editor-pane {
+	position: relative;
+	min-width: 0;
+}
+
+/* File tabs */
+.fsed-filetabs {
+    display: flex;
+    gap: 2px;
+    padding: 8px 8px 0;
+    overflow-x: auto;
+    background: var(--r-bar);
+    min-height: 34px;
+}
+
+.fsed-filetabs[hidden] { display: none; }
+
+.fsed-filetab {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+	color: var(--r-muted);
+	background: var(--r-tab-bg);
+	border: 1px solid transparent;
+	border-bottom: 0;
+	border-radius: 6px 6px 0 0;
+}
+
+.fsed-filetab.is-active {
+	color: var(--r-text);
+	background: var(--r-tab-active-bg);
+}
+
+.fsed-filetab .fsed-filetab-label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 4px 7px 12px;
+	color: inherit;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.fsed-filetab .fsed-filetab-label .fsed-filetab-dot {
+	display: none;
+	width: 8px;
+	height: 8px;
+	background: var(--r-hot);
+	border-radius: 50%;
+}
+
+.fsed-filetab.is-dirty .fsed-filetab-label .fsed-filetab-dot {
+	display: inline-block;
+}
+
+.fsed-filetab .fsed-filetab-close {
+	width: 20px;
+	height: 20px;
+	margin: 0 6px 0 2px;
+	color: inherit;
+	font-size: 15px;
+	line-height: 1;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.fsed-filetab .fsed-filetab-close:hover {
+	background: var(--r-menu-hover-bg);
+}
+
+/* Editor box */
+.fsed-editor-box {
+	position: relative;
+	min-height: 380px;
+	max-height: 380px;
+	margin: 0;
+	overflow: auto;
+	font-family: var(--font-code);
+	font-size: 0.8438rem;
+	line-height: 1.65;
+	cursor: text;
+	outline-offset: -3px;
+}
+
+.fsed-editor-pane .CodeMirror,
+.fsed-editor {
+	border: 0;
+	background: var(--r-editor-bg);
+	color: var(--r-editor-text);
+}
+.fsed-editor-pane .CodeMirror {
+    min-height: 380px;
+}
+
+/* Loading overlay */
+.fsed-editor-status {
+	position: absolute;
+	inset: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	box-sizing: border-box;
+	padding: 20px;
+	color: var(--r-muted);
+	font-size: 14px;
+	text-align: center;
+	pointer-events: none;
+}
+
+.fsed-editor-status[hidden] { display: none; }
+
+.fsed-editor-status.is-loading {
+	background: var(--r-overlay-bg);
+	color: var(--r-overlay-text);
+}
+
+.fsed-editor-status .spinner {
+	float: none;
+	margin: 0;
+}
+
+.fsed-editor-status .spinner:not(.is-active) { display: none; }
+
+/* ------------------------------------------------------------
+   CodeMirror syntax — DARK overrides only.
+   Light uses CodeMirror's default theme.
+   ------------------------------------------------------------ */
+.fsed-theme-dark .CodeMirror {
+	background: var(--r-editor-bg);
+	color: var(--r-editor-text);
+}
+
+.fsed-theme-dark .CodeMirror-gutters {
+	background: var(--r-bar);
+	border-right-color: var(--r-line);
+}
+
+.fsed-theme-dark .CodeMirror-linenumber { color: #858585; }
+.fsed-theme-dark .CodeMirror-cursor { border-left-color: #fff; }
+
+.fsed-theme-dark .CodeMirror-selected,
+.fsed-theme-dark .CodeMirror-focused .CodeMirror-selected {
+	background: #264f78;
+}
+
+.fsed-theme-dark .CodeMirror-activeline-background {
+	background: #2a2d2e;
+}
+
+.fsed-theme-dark .cm-keyword,
+.fsed-theme-dark .cm-atom { color: #569cd6; }
+
+.fsed-theme-dark .cm-def,
+.fsed-theme-dark .cm-variable-2,
+.fsed-theme-dark .cm-property { color: #9cdcfe; }
+
+.fsed-theme-dark .cm-string,
+.fsed-theme-dark .cm-string-2 { color: #ce9178; }
+
+.fsed-theme-dark .cm-number { color: #b5cea8; }
+.fsed-theme-dark .cm-comment { color: #6a9955; }
+
+.fsed-theme-dark .cm-variable-3,
+.fsed-theme-dark .cm-tag,
+.fsed-theme-dark .cm-builtin { color: #4ec9b0; }
+
+.fsed-theme-dark .cm-attribute,
+.fsed-theme-dark .cm-meta { color: #dcdcaa; }
+
+/* ------------------------------------------------------------
+   Statusbar
+   ------------------------------------------------------------ */
+.fsed-statusbar {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 6px 14px;
+	color: var(--r-muted);
+	font-size: 0.75rem;
+	background: var(--r-bar);
+	border-top: 1px solid var(--r-line);
+}
+
+.fsed-statusbar .fsed-sb-spacer { flex: 1 1 0; }
+
+.fsed-statusbar .fsed-badge {
+	padding: 1px 9px;
+	font-weight: 600;
+	color: var(--r-badge-text);
+	background: var(--r-badge-bg);
+	border-radius: 99px;
+}
+
+.fsed-statusbar .fsed-badge.is-ok {
+	color: var(--r-badge-ok-text);
+	background: var(--r-badge-ok-bg);
+}
+
+.fsed-statusbar .fsed-badge.is-warn {
+	color: var(--r-badge-warn-text);
+	background: var(--r-badge-warn-bg);
+}
+
+.fsed-statusbar .fsed-badge.is-muted {
+	color: var(--r-badge-text);
+	background: var(--r-badge-bg);
+}
+
+/* ------------------------------------------------------------
+   Sidebar
+   ------------------------------------------------------------ */
+.fsed-sidebar {
+	display: flex;
+	flex-direction: column;
+	height: calc(31px + 70vh);
+	min-height: 431px;
+	overflow: hidden;
+	background: var(--r-panel);
+	border-inline-start: 1px solid var(--r-line);
+	border-radius: 4px;
+}
+
+.fsed-tree-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	padding: 10px;
+	background: var(--r-bar);
+	border-bottom: 1px solid var(--r-line);
+}
+
+.fsed-icon-btn {
+	position: relative;
+	display: inline-grid;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	color: var(--r-icon-btn);
+	background: transparent;
+	border: 1px solid var(--r-line);
+	border-radius: 5px;
+	cursor: pointer;
+	place-items: center;
+	box-shadow: none;
+}
+.fsed-icon-btn:before {
+    content: attr(data-tip);
+    padding: 5px;
+    background: #fff;
+    border-radius: 5px;
+    min-width: 50px;
+    color: #000;
+    position: absolute;
+    bottom: -36px;
+    left: 0;
+    font-size: 10px;
+    text-align: center;
+    display: none;
+    justify-content: center;
+    z-index: 9;
+}
+.fsed-icon-btn:after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 8px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    display: none;
+    clip-path: polygon(0 100%, 100% 100%, 50% 0);
+}
+.fsed-icon-btn:hover:before,
+.fsed-icon-btn:hover:after {
+    display: flex;
+}
+
+.fsed-icon-btn:hover:not(:disabled) { border-color: var(--r-icon-btn); }
+.fsed-icon-btn:disabled { opacity: 0.4; cursor: default; }
+
+.fsed-icon-btn-danger { color: var(--r-icon-btn-danger); }
+.fsed-icon-btn-danger:hover:not(:disabled) { border-color: var(--r-icon-btn-danger); }
+
+.fsed-icon-btn .icon {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.75;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	flex: 0 0 auto;
+}
+
+.fsed-icon-sep {
+	width: 1px;
+	height: 22px;
+	margin: 4px 4px;
+	background: var(--r-line);
+}
+
+/* ============================================================
+   SIDEBAR — selected path strip (between tree-actions and tree)
+   ============================================================ */
+.fsed-sidebar .fsed-selected {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	padding: 8px 12px;
+	color: var(--r-muted);
+	font-size: 0.75rem;
+	font-weight: 500;
+	line-height: 1.4;
+	background: var(--r-bar);
+	border-bottom: 1px solid var(--r-line);
+	min-height: 32px;
+	overflow: hidden;
+}
+
+.fsed-sidebar .fsed-selected strong,
+.fsed-sidebar .fsed-selected #fsed-selected-path {
+	flex: 1 1 auto;
+	min-width: 0;
+	color: var(--r-text);
+	font-family: var(--font-code);
+	font-size: 0.75rem;
+	font-weight: 600;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Empty / dash state — keep it visually quiet */
+.fsed-sidebar .fsed-selected strong:empty::before,
+.fsed-sidebar .fsed-selected #fsed-selected-path:only-child {
+	/* no-op, markup already includes "–" */
+}
+
+.fsed-tree {
+	flex: 1 1 0;
+	padding: 8px;
+	overflow: auto;
+}
+
+.fsed-tree .fsed-tree-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.fsed-tree .fsed-tree-dir .fsed-tree-list { padding-left: 14px; }
+
+.fsed-tree .fsed-tree-dir .fsed-tree-toggle {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 6px;
+	color: var(--r-muted);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	box-shadow: none;
+}
+
+.fsed-tree .fsed-tree-dir .fsed-tree-toggle .fsed-icon-folder {
+	display: inline-flex;
+	width: 16px;
+	height: 16px;
+	flex: 0 0 16px;
+	background-color: #dba617;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M2 4h6l2 2h8v10H2z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M2 4h6l2 2h8v10H2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Folder state: arrow turns down and the folder opens when expanded. */
+.fsed-tree .fsed-tree-dir .fsed-tree-toggle {
+	width: 100%;
+	text-align: start;
+	border-radius: 3px;
+}
+
+.fsed-tree .fsed-tree-dir .fsed-tree-toggle::before {
+	content: "";
+	flex: 0 0 10px;
+	width: 10px;
+	height: 10px;
+	background-color: currentColor;
+	opacity: 0.7;
+	transition: transform 0.12s ease;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 4l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 4l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.fsed-tree .fsed-tree-dir .fsed-tree-toggle[aria-expanded="true"]::before {
+	transform: rotate(90deg);
+}
+
+.fsed-tree .fsed-tree-dir .fsed-tree-toggle[aria-expanded="true"] .fsed-icon-folder {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M2 4h6l2 2h7v3H6l-4 7z'/%3E%3Cpath d='M6.5 10H20l-3.5 7H2.5z'/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M2 4h6l2 2h7v3H6l-4 7z'/%3E%3Cpath d='M6.5 10H20l-3.5 7H2.5z'/%3E%3C/svg%3E");
+}
+
+.fsed-tree .fsed-tree-dir .fsed-tree-toggle[aria-expanded="true"] {
+	color: var(--r-text);
+}
+
+/* Selected folder or file (the target of the toolbar and right-click actions). */
+.fsed-tree .fsed-tree-dir .fsed-tree-toggle.is-selected,
+.fsed-tree .fsed-tree-file.is-selected:not(.is-active) {
+	color: var(--r-tree-file-active);
+	background: var(--r-tree-file-active-bg);
+	box-shadow: inset 0 0 0 1px var(--r-tree-file-active-border);
+}
+
+.fsed-tree .fsed-tree-item .fsed-tree-file {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	margin: 0;
+	padding: 5px 6px;
+	color: var(--r-tree-file);
+	font-size: 0.8125rem;
+	text-align: start;
+	background: none;
+	border: 0;
+	border-inline-start: 3px solid transparent;
+	border-radius: 3px;
+	cursor: pointer;
+	box-shadow: none;
+}
+
+.fsed-tree .fsed-tree-file.is-active {
+	color: var(--r-tree-file-active);
+	background: var(--r-tree-file-active-bg);
+	border-inline-start-color: var(--r-tree-file-active-border);
+}
+
+.fsed-ext-php  { --ext: #777bb3; }
+.fsed-ext-js   { --ext: #d6b600; }
+.fsed-ext-json { --ext: #5b9a2f; }
+.fsed-ext-css  { --ext: #2965f1; }
+.fsed-ext-scss { --ext: #cd6799; }
+.fsed-ext-less { --ext: #1d365d; }
+.fsed-ext-html,
+.fsed-ext-htm  { --ext: #e44d26; }
+.fsed-ext-xml,
+.fsed-ext-svg  { --ext: #f29c1f; }
+.fsed-ext-md,
+.fsed-ext-txt  { --ext: #646970; }
+.fsed-ext-yml,
+.fsed-ext-yaml { --ext: #cb171e; }
+.fsed-ext-po,
+.fsed-ext-pot  { --ext: #3b9bd6; }
+
+.fsed-tree .fsed-tree-file .fsed-icon {
+	width: 9px;
+	height: 11px;
+	flex: 0 0 auto;
+	background: var(--ext, #8795a9);
+	border-radius: 2px;
+}
+
+/* ------------------------------------------------------------
+   Modals (theme-aware via vars)
+   ------------------------------------------------------------ */
+body.fsed-modal-open { overflow: hidden; }
+
+/* Right-click menu on the file list */
+.fsed-ctx {
+	position: fixed;
+	z-index: 100002;
+	min-width: 170px;
+	padding: 5px;
+	background: var(--r-panel);
+	color: var(--r-text);
+	border: 1px solid var(--r-line);
+	border-radius: 8px;
+	box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+	font-family: var(--font-display);
+}
+
+.fsed-ctx-item {
+	display: block;
+	width: 100%;
+	padding: 7px 12px;
+	border: 0;
+	border-radius: 5px;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	font-size: 13px;
+	text-align: start;
+	cursor: pointer;
+}
+
+.fsed-ctx-item:hover,
+.fsed-ctx-item:focus-visible {
+	background: var(--r-menu-hover-bg);
+	outline: 0;
+}
+
+.fsed-ctx-item.is-danger { color: #d63638; }
+
+.fsed-ctx-sep {
+	height: 1px;
+	margin: 5px 4px;
+	background: var(--r-line);
+}
+
+/* ------------------------------------------------------------
+   Fullscreen: editor and file list fill the browser window
+   ------------------------------------------------------------ */
+body.fsed-is-fullscreen { overflow: hidden; }
+
+/* Keep save and error messages visible above the fullscreen editor. */
+body.fsed-is-fullscreen .fsed-notice {
+	position: fixed;
+	top: 12px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 100001;
+	max-width: 90vw;
+	margin: 0;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+.fsed-wrapper.is-fullscreen {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	flex-direction: column;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.fsed-wrapper.is-fullscreen .fsed-layout {
+	flex: 1 1 auto;
+	min-height: 0;
+	grid-template-columns: minmax(0, 1fr) 280px;
+}
+
+.fsed-wrapper.is-fullscreen .fsed-editor-pane {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+
+.fsed-wrapper.is-fullscreen .fsed-editor-box {
+	flex: 1 1 auto;
+	min-height: 0;
+	max-height: none;
+	overflow: hidden;
+}
+
+.fsed-wrapper.is-fullscreen .fsed-editor-pane .CodeMirror,
+.fsed-wrapper.is-fullscreen .fsed-editor {
+	height: 100%;
+	min-height: 0;
+}
+
+.fsed-wrapper.is-fullscreen .fsed-sidebar {
+	height: auto;
+	min-height: 0;
+	max-height: none;
+}
+
+@media screen and (max-width: 782px) {
+	.fsed-wrapper.is-fullscreen .fsed-layout {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: minmax(0, 1fr) 35%;
+	}
+}
+
+.fsed-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--r-text);
+	font-family: var(--font-display);
+}
+
+.fsed-modal[hidden] { display: none; }
+
+.fsed-modal-backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.fsed-modal-dialog {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 900px;
+	max-width: 92vw;
+	max-height: 90vh;
+	overflow: hidden;
+	color: var(--r-text);
+	background: var(--r-bg);
+	border: 1px solid var(--r-line);
+	border-radius: 8px;
+	box-shadow: var(--r-shadow);
+}
+
+.fsed-modal-dialog-medium { width: 680px; }
+
+.fsed-modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 4px 12px 4px 20px;
+	background: var(--r-bar);
+	border-bottom: 1px solid var(--r-line);
+	flex: 0 0 auto;
+}
+
+.fsed-modal-header h2 {
+	margin: 12px 0;
+	color: var(--r-text);
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.fsed-modal-close {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	color: var(--r-muted);
+	font-size: 22px;
+	line-height: 1;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+	cursor: pointer;
+	box-shadow: none;
+}
+
+.fsed-modal-close:hover,
+.fsed-modal-close:focus {
+	color: var(--r-danger);
+	background: var(--r-menu-hover-bg);
+	outline: none;
+}
+
+.fsed-modal-file {
+	margin: 16px 20px 6px;
+	padding: 6px 10px;
+	color: var(--r-text);
+	font-family: var(--font-code);
+	font-size: 12px;
+	background: var(--r-input);
+	border: 1px solid var(--r-line);
+	border-radius: 4px;
+	word-break: break-all;
+}
+
+.fsed-modal-status {
+	min-height: 18px;
+	margin: 0 20px 10px;
+	color: var(--r-muted);
+	font-size: 13px;
+}
+
+.fsed-modal-body {
+	display: flex;
+	flex: 1 1 auto;
+	gap: 12px;
+	min-height: 0;
+	padding: 0 20px;
+	overflow: hidden;
+}
+
+/* Backup list */
+#fsed-backup-list {
+	flex: 0 0 240px;
+	max-height: 50vh;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	list-style: none;
+	background: var(--r-input);
+	border: 1px solid var(--r-line);
+	border-radius: 4px;
+}
+
+#fsed-backup-list li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.fsed-backup-item {
+	display: block;
+	width: 100%;
+	padding: 10px 12px;
+	color: var(--r-text);
+	font-size: 13px;
+	text-align: start;
+	background: none;
+	border: 0;
+	border-bottom: 1px solid var(--r-row-border);
+	border-inline-start: 3px solid transparent;
+	cursor: pointer;
+	box-shadow: none;
+}
+
+#fsed-backup-list li:last-child .fsed-backup-item { border-bottom: 0; }
+
+.fsed-backup-item:hover,
+.fsed-backup-item:focus {
+	background: var(--r-menu-hover-bg);
+	outline: none;
+}
+
+.fsed-backup-item.is-active {
+	background: var(--r-tree-file-active-bg);
+	border-inline-start-color: var(--r-tree-file-active-border);
+	font-weight: 600;
+}
+
+.fsed-backup-author {
+	display: block;
+	margin-top: 2px;
+	color: var(--r-muted);
+	font-size: 12px;
+	font-weight: 400;
+	word-break: break-word;
+}
+
+/* Preview panel */
+.fsed-backup-preview {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.fsed-tabs {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin-bottom: 8px;
+	padding: 3px;
+	background: var(--r-input);
+	border-radius: 6px;
+}
+
+.fsed-tab {
+	margin: 0;
+	padding: 4px 14px;
+	color: var(--r-muted);
+	font-size: 13px;
+	background: none;
+	border: 0;
+	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: none;
+}
+
+.fsed-tab:hover { color: var(--r-text); }
+
+.fsed-tab.is-active {
+	color: var(--r-text);
+	background: var(--r-tab-active-bg);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.fsed-diff-summary {
+	margin-inline-start: auto;
+	color: var(--r-muted);
+	font-size: 12px;
+}
+
+#fsed-backup-diff.fsed-diff {
+	flex: 1 1 auto;
+	height: 50vh;
+	overflow: auto;
+	box-sizing: border-box;
+	color: var(--r-text);
+	font-family: var(--font-code);
+	font-size: 12px;
+	line-height: 1.5;
+	background: var(--r-bg);
+	border: 1px solid var(--r-line);
+	border-radius: 4px;
+}
+
+#fsed-backup-diff[hidden],
+#fsed-backup-preview[hidden] { display: none; }
+
+#fsed-compare-diff.fsed-diff {
+	flex: 1 1 auto;
+	height: 50vh;
+	overflow: auto;
+	box-sizing: border-box;
+	color: var(--r-text);
+	font-family: var(--font-code);
+	font-size: 12px;
+	line-height: 1.5;
+	background: var(--r-bg);
+	border: 1px solid var(--r-line);
+	border-radius: 4px;
+}
+
+#fsed-compare-modal[hidden],
+#fsed-compare-load[hidden],
+#fsed-compare-save[hidden] { display: none; }
+
+.fsed-statusbar .fsed-sb-btn {
+	padding: 1px 9px;
+	color: inherit;
+	font-size: inherit;
+	background: transparent;
+	border: 1px solid var(--r-line);
+	border-radius: 99px;
+	cursor: pointer;
+}
+
+.fsed-statusbar .fsed-sb-btn:hover:not(:disabled),
+.fsed-statusbar .fsed-sb-btn:focus-visible {
+	color: var(--r-text);
+	border-color: var(--r-muted);
+}
+
+.fsed-statusbar .fsed-sb-btn:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.fsed-diff-message,
+.fsed-diff-legend {
+	margin: 0;
+	padding: 8px 10px;
+	color: var(--r-muted);
+	font-family: inherit;
+}
+
+.fsed-diff-row {
+	display: flex;
+	min-width: max-content;
+}
+
+.fsed-diff-sign {
+	flex: 0 0 24px;
+	color: var(--r-muted);
+	text-align: center;
+	user-select: none;
+}
+
+.fsed-diff-text {
+	white-space: pre;
+	tab-size: 4;
+}
+
+.fsed-diff-row.is-add { background: rgba(111, 224, 160, 0.18); }
+.fsed-diff-row.is-del { background: rgba(255, 122, 69, 0.18); }
+
+.fsed-diff-skip {
+	padding: 2px 10px;
+	color: var(--r-muted);
+	background: var(--r-input);
+}
+
+#fsed-backup-preview {
+	display: block;
+	width: 100%;
+	height: 50vh;
+	box-sizing: border-box;
+	padding: 10px;
+	color: var(--r-text);
+	font-family: var(--font-code);
+	font-size: 13px;
+	line-height: 1.5;
+	tab-size: 4;
+	white-space: pre;
+	overflow: auto;
+	background: var(--r-bg);
+	border: 1px solid var(--r-line);
+	border-radius: 4px;
+	resize: none;
+}
+
+#fsed-backup-preview:focus {
+	outline: 2px solid var(--r-accent);
+	outline-offset: -1px;
+}
+
+/* Footer */
+.fsed-modal-footer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 16px;
+	padding: 14px 20px;
+	background: var(--r-bar);
+	border-top: 1px solid var(--r-line);
+	flex: 0 0 auto;
+}
+
+/* Modal buttons */
+.fsed-modal .button,
+.fsed-modal .button.button-primary,
+.fsed-modal .button.button-small,
+.fsed-modal .button.fsed-button-danger {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	min-height: 34px;
+	margin: 0;
+	padding: 0 14px;
+	color: var(--r-text);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1;
+	text-decoration: none;
+	background: transparent;
+	border: 1px solid var(--r-line);
+	border-radius: 6px;
+	box-shadow: none;
+	text-shadow: none;
+	cursor: pointer;
+}
+
+.fsed-modal .button.button-small {
+	min-height: 28px;
+	padding: 0 10px;
+	font-size: 12px;
+}
+
+.fsed-modal .button:hover:not(:disabled),
+.fsed-modal .button.button-primary:hover:not(:disabled) {
+	color: var(--r-text);
+	border-color: var(--r-text);
+	background: transparent;
+}
+
+.fsed-modal .button:focus-visible:not(:disabled) {
+	outline: 2px solid var(--r-accent);
+	outline-offset: 1px;
+}
+
+.fsed-modal .button:disabled,
+.fsed-modal .button.button-primary:disabled {
+	opacity: 0.45;
+	cursor: default;
+}
+
+.fsed-modal .button.button-primary {
+	color: #fff;
+	background: var(--r-accent);
+	border-color: var(--r-accent);
+}
+
+.fsed-modal .button.button-primary:hover:not(:disabled) {
+	color: #fff;
+	background: var(--r-accent-hover);
+	border-color: var(--r-accent-hover);
+}
+
+.fsed-modal .button.button-primary:disabled {
+	color: var(--r-text);
+	background: transparent;
+	border-color: var(--r-line);
+}
+
+.fsed-modal .button.fsed-button-danger {
+	color: var(--r-danger);
+	border-color: var(--r-danger);
+}
+
+.fsed-modal .button.fsed-button-danger:hover:not(:disabled) {
+	color: #fff;
+	background: var(--r-danger);
+	border-color: var(--r-danger);
+}
+
+/* Trash list */
+#fsed-trash-list.fsed-trash-list {
+	max-height: 50vh;
+	margin: 0 20px;
+	padding: 0;
+	overflow: auto;
+	list-style: none;
+}
+
+.fsed-trash-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin: 0 0 8px;
+	padding: 10px 12px;
+	background: var(--r-input);
+	border: 1px solid var(--r-line);
+	border-radius: 4px;
+	list-style: none;
+}
+
+.fsed-trash-item:hover { background: var(--r-menu-hover-bg); }
+
+.fsed-trash-info {
+	min-width: 0;
+	word-break: break-all;
+	color: var(--r-text);
+}
+
+.fsed-trash-info strong { font-weight: 600; }
+
+.fsed-trash-meta {
+	display: block;
+	margin-top: 2px;
+	color: var(--r-muted);
+	font-size: 12px;
+}
+
+.fsed-trash-buttons {
+	display: flex;
+	flex: 0 0 auto;
+	gap: 6px;
+}
+
+/* ============================================================
+   ACTION MODAL — Rename / New file / New folder / Upload /
+   Duplicate / Move / Move to trash
+   (uses existing tokens: --r-bg, --r-bar, --r-input, --r-line,
+   --r-text, --r-muted, --r-accent, --r-danger)
+   ============================================================ */
+
+/* Narrower dialog for single-field dialogs */
+.fsed-modal-dialog.fsed-modal-dialog-small {
+	width: 460px;
+	max-width: 92vw;
+}
+
+/* Intro / description line (e.g. "404-copy.php") */
+.fsed-modal .fsed-action-message {
+	margin: 16px 20px 0;
+	color: var(--r-muted);
+	font-size: 13px;
+	line-height: 1.5;
+	word-break: break-word;
+}
+
+/* Field rows */
+.fsed-modal .fsed-action-row {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin: 14px 20px 0;
+}
+
+.fsed-modal .fsed-action-row[hidden] {
+	display: none !important;
+}
+
+.fsed-modal .fsed-action-row > label {
+	display: block;
+	color: var(--r-text);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+/* Text / select inputs inside action modal */
+.fsed-modal .fsed-action-row input[type="text"],
+.fsed-modal .fsed-action-row input[type="email"],
+.fsed-modal .fsed-action-row input[type="url"],
+.fsed-modal .fsed-action-row select {
+	display: block;
+	width: 100%;
+	min-height: 36px;
+	padding: 6px 10px;
+	color: var(--r-text);
+	font-family: inherit;
+	font-size: 13px;
+	line-height: 1.4;
+	background: var(--r-input);
+	border: 1px solid var(--r-line);
+	border-radius: 6px;
+	box-shadow: none;
+	box-sizing: border-box;
+}
+
+.fsed-modal .fsed-action-row select {
+	padding-right: 30px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238795a9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	background-size: 14px 14px;
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+}
+
+.fsed-modal .fsed-action-row input[type="text"]::placeholder {
+	color: var(--r-muted);
+}
+
+.fsed-modal .fsed-action-row input[type="text"]:focus,
+.fsed-modal .fsed-action-row select:focus {
+	outline: 2px solid var(--r-accent);
+	outline-offset: -1px;
+	border-color: var(--r-accent);
+	box-shadow: none;
+}
+
+.fsed-modal .fsed-action-row input[type="text"]:disabled,
+.fsed-modal .fsed-action-row select:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+/* File input */
+.fsed-modal .fsed-action-row input[type="file"] {
+	display: block;
+	width: 100%;
+	padding: 8px 10px;
+	color: var(--r-text);
+	font-family: inherit;
+	font-size: 13px;
+	background: var(--r-input);
+	border: 1px dashed var(--r-line);
+	border-radius: 6px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.fsed-modal .fsed-action-row input[type="file"]::file-selector-button {
+	margin-right: 10px;
+	padding: 5px 12px;
+	color: var(--r-text);
+	font-family: inherit;
+	font-size: 12px;
+	font-weight: 600;
+	background: var(--r-bar);
+	border: 1px solid var(--r-line);
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.fsed-modal .fsed-action-row input[type="file"]:focus {
+	outline: 2px solid var(--r-accent);
+	outline-offset: -1px;
+	border-color: var(--r-accent);
+}
+
+/* Error box */
+.fsed-modal .fsed-action-error {
+	margin: 14px 20px 0;
+	padding: 8px 12px;
+	color: #ff8b8b;
+	font-size: 13px;
+	line-height: 1.45;
+	background: rgba(214, 54, 56, 0.12);
+	border: 1px solid rgba(214, 54, 56, 0.5);
+	border-radius: 6px;
+}
+
+.fsed-modal .fsed-action-error[hidden] {
+	display: none !important;
+}
+
+/* Keep the footer flush under the last row */
+.fsed-modal .fsed-action-row + .fsed-modal-footer,
+.fsed-modal .fsed-action-error + .fsed-modal-footer,
+.fsed-modal .fsed-action-message + .fsed-modal-footer {
+	margin-top: 18px;
+}
+
+/* Submit button inherits from .button.button-primary, but small
+   safety net so it can never pick up WP admin defaults */
+.fsed-modal .fsed-action-submit {
+	cursor: pointer;
+}
+
+.fsed-modal .fsed-action-submit:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+/* Small screens */
+@media screen and (max-width: 782px) {
+	.fsed-modal-dialog.fsed-modal-dialog-small {
+		width: 94vw;
+	}
+
+	.fsed-modal .fsed-action-message,
+	.fsed-modal .fsed-action-row,
+	.fsed-modal .fsed-action-error {
+		margin-inline: 16px;
+	}
+}
+
+/* Error box: readable in both themes */
+.fsed-modal .fsed-action-error {
+	color: #b32d2e;
+	background: #fcf0f1;
+	border-color: #f0b7b9;
+}
+
+.fsed-theme-dark .fsed-modal .fsed-action-error,
+.fsed-theme-dark.fsed-modal .fsed-action-error {
+	color: #ff8b8b;
+	background: rgba(214, 54, 56, 0.12);
+	border-color: rgba(214, 54, 56, 0.5);
+}
+
+
+/* ============================================================
+   FOOTER — plugin branding strip (full-width, below content)
+   Works inside .fsed-wrapper (theme-aware via --r-*)
+   and on settings/log pages (via fallback tokens).
+   ============================================================ */
+.fsed-footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 16px 0 0;
+	padding: 14px 18px;
+	color: var(--r-muted, #646970);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	background: var(--r-bar, #f6f7f7);
+	border: 1px solid var(--r-line, #dcdcde);
+	border-radius: 8px;
+}
+
+/* Middot separators */
+.fsed-footer > span[aria-hidden="true"] {
+	color: var(--r-muted, #a7aaad);
+	font-size: 13px;
+	line-height: 1;
+	opacity: 0.55;
+	user-select: none;
+}
+
+/* Links */
+.fsed-footer a {
+	color: var(--r-accent, #2271b1);
+	font-weight: 500;
+	text-decoration: none;
+	transition: color 0.1s ease-in-out;
+}
+
+.fsed-footer a:hover,
+.fsed-footer a:focus {
+	color: var(--r-accent-hover, #135e96);
+	text-decoration: underline;
+	outline: none;
+}
+
+.fsed-footer a:focus-visible {
+	outline: 2px solid var(--r-accent, #2271b1);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* Disabled / not-a-link text (plugin name + version) stays muted */
+.fsed-footer > :not(a):not(span) {
+	color: var(--r-text, #1d2327);
+	font-weight: 500;
+}
+
+/* Responsive: tighter paddings, let it stack */
+@media screen and (max-width: 782px) {
+	.fsed-footer {
+		margin-top: 12px;
+		padding: 12px 14px;
+		gap: 6px;
+		font-size: 11px;
+		border-radius: 6px;
+	}
+}
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+@media screen and (max-width: 782px) {
+	.fsed-layout { grid-template-columns: 1fr; }
+
+	.fsed-sidebar {
+		height: auto;
+		min-height: 0;
+		max-height: 50vh;
+		border-inline-start: 0;
+		border-top: 1px solid var(--r-line);
+	}
+
+	.fsed-editor,
+	.fsed-editor-pane .CodeMirror {
+		height: 50vh;
+		min-height: 250px;
+	}
+
+	.fsed-modal-body { flex-direction: column; }
+
+	#fsed-backup-list {
+		flex-basis: auto;
+		max-height: 25vh;
+	}
+
+	#fsed-backup-preview,
+	#fsed-backup-diff.fsed-diff { height: 30vh; }
+
+	.fsed-modal-dialog,
+	.fsed-modal-dialog-medium {
+		width: 94vw;
+		max-height: 92vh;
+	}
+
+	.fsed-trash-item {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.fsed-selectors {
+		padding-inline-start: 0;
+		border-inline-start: 0;
+	}
+}
+
+
+
+
+/* ============================================================
+   FileSmith Editor — Settings page (LIGHT theme)
+   Scoped to .fsed-wrap.fsed-settings — nothing else affected.
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
+.fsed-wrap.fsed-settings {
+	--s-bg: #ffffff;
+	--s-bar: #f6f7f7;
+	--s-panel: #f0f0f1;
+	--s-input: #ffffff;
+	--s-line: #dcdcde;
+	--s-line-soft: #f0f0f1;
+	--s-text: #1d2327;
+	--s-muted: #646970;
+	--s-accent: #2271b1;
+	--s-accent-hover: #135e96;
+	--s-danger: #d63638;
+	--s-ok: #00a32a;
+	--s-warn: #b32d2e;
+	--s-warn-bg: #fcf9e8;
+	--s-warn-text: #7c5700;
+	--s-code: Consolas, Monaco, "Andale Mono", monospace;
+	--s-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Wrapper ---------- */
+.fsed-wrap.fsed-settings {
+	box-sizing: border-box;
+	margin: 10px 20px 20px 2px;
+	padding: 20px 24px 24px;
+	color: var(--s-text);
+	background: var(--s-bg);
+	border: 1px solid var(--s-line);
+	border-radius: 8px;
+	box-shadow: var(--s-shadow);
+}
+
+.fsed-wrap.fsed-settings *,
+.fsed-wrap.fsed-settings *::before,
+.fsed-wrap.fsed-settings *::after {
+	box-sizing: border-box;
+}
+
+/* ---------- Headings ---------- */
+.fsed-wrap.fsed-settings h1 {
+	margin: 0 0 16px;
+	padding: 0;
+	color: var(--s-text);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.fsed-wrap.fsed-settings h2 {
+	margin: 0 0 6px;
+	padding: 0;
+	color: var(--s-text);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 1.125rem;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.fsed-wrap.fsed-settings h3 {
+	margin: 0 0 6px;
+	padding: 0;
+	color: var(--s-text);
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.fsed-wrap.fsed-settings p {
+	color: var(--s-text);
+}
+
+/* ---------- Notices ---------- */
+.fsed-wrap.fsed-settings .notice,
+.fsed-wrap.fsed-settings .settings_errors .notice {
+	margin: 0 0 16px;
+	padding: 10px 14px;
+	color: var(--s-text);
+	background: var(--s-bg);
+	border: 1px solid var(--s-line);
+	border-left: 4px solid var(--s-accent);
+	border-radius: 4px;
+	box-shadow: none;
+}
+
+.fsed-wrap.fsed-settings .notice p {
+	margin: 0;
+	color: inherit;
+}
+
+.fsed-wrap.fsed-settings .notice-success {
+	border-left-color: var(--s-ok);
+}
+
+.fsed-wrap.fsed-settings .notice-warning {
+	color: var(--s-warn-text);
+	background: var(--s-warn-bg);
+	border-left-color: #dba617;
+}
+
+.fsed-wrap.fsed-settings .notice-error {
+	border-left-color: var(--s-danger);
+}
+
+.fsed-wrap.fsed-settings .notice-dismiss::before {
+	color: var(--s-muted);
+}
+
+/* ---------- Tabs ---------- */
+.fsed-wrap.fsed-settings .fsed-tab-nav.nav-tab-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin: 0 0 20px;
+	padding: 0 0 0;
+	background: transparent;
+	border: 0;
+	border-bottom: 1px solid var(--s-line);
+	border-radius: 0;
+}
+
+.fsed-wrap.fsed-settings .fsed-tab-nav .nav-tab {
+	margin: 0 0 -1px;
+	padding: 10px 16px;
+	color: var(--s-muted);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1;
+	text-decoration: none;
+	background: transparent;
+	border: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+	border-radius: 6px 6px 0 0;
+	box-shadow: none;
+}
+
+.fsed-wrap.fsed-settings .fsed-tab-nav .nav-tab:hover,
+.fsed-wrap.fsed-settings .fsed-tab-nav .nav-tab:focus {
+	color: var(--s-text);
+	background: var(--s-bar);
+	outline: none;
+}
+
+.fsed-wrap.fsed-settings .fsed-tab-nav .nav-tab.nav-tab-active,
+.fsed-wrap.fsed-settings .fsed-tab-nav .nav-tab.nav-tab-active:hover,
+.fsed-wrap.fsed-settings .fsed-tab-nav .nav-tab.nav-tab-active:focus {
+	color: var(--s-text);
+	background: var(--s-bg);
+	border-color: var(--s-line);
+	border-bottom-color: var(--s-bg);
+	box-shadow: none;
+}
+
+/* ---------- Panels ---------- */
+.fsed-wrap.fsed-settings .fsed-panel {
+	display: block;
+}
+
+.fsed-wrap.fsed-settings .fsed-panel[hidden] {
+	display: none;
+}
+
+/* ---------- Cards ---------- */
+.fsed-wrap.fsed-settings .fsed-card {
+	margin: 0 0 16px;
+	padding: 20px;
+	background: var(--s-bg);
+	border: 1px solid var(--s-line);
+	border-radius: 6px;
+	box-shadow: var(--s-shadow);
+}
+
+.fsed-wrap.fsed-settings .fsed-card:last-child {
+	margin-bottom: 0;
+}
+
+.fsed-wrap.fsed-settings .fsed-card-intro {
+	margin: 0 0 16px;
+	color: var(--s-muted);
+	font-size: 0.875rem;
+	line-height: 1.5;
+}
+
+/* ---------- Fields ---------- */
+.fsed-wrap.fsed-settings .fsed-field {
+	margin: 0 0 18px;
+}
+
+.fsed-wrap.fsed-settings .fsed-field:last-child {
+	margin-bottom: 0;
+}
+
+.fsed-wrap.fsed-settings .fsed-field > label,
+.fsed-wrap.fsed-settings .fsed-field > .fsed-label {
+	display: block;
+	margin-bottom: 6px;
+	color: var(--s-text);
+	font-size: 13px;
+	font-weight: 600;
+}
+
+/* ---------- Form controls ---------- */
+.fsed-wrap.fsed-settings input[type="text"],
+.fsed-wrap.fsed-settings input[type="number"],
+.fsed-wrap.fsed-settings input[type="email"],
+.fsed-wrap.fsed-settings input[type="url"],
+.fsed-wrap.fsed-settings input[type="password"],
+.fsed-wrap.fsed-settings input[type="search"],
+.fsed-wrap.fsed-settings select,
+.fsed-wrap.fsed-settings textarea {
+	padding: 6px 10px;
+	color: var(--s-text);
+	font-family: inherit;
+	font-size: 13px;
+	line-height: 1.4;
+	background: var(--s-input);
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	box-shadow: 0 0 0 transparent;
+	transition: box-shadow 0.1s ease-in-out, border-color 0.1s ease-in-out;
+}
+
+.fsed-wrap.fsed-settings input[type="text"],
+.fsed-wrap.fsed-settings input[type="email"],
+.fsed-wrap.fsed-settings input[type="url"],
+.fsed-wrap.fsed-settings input[type="password"],
+.fsed-wrap.fsed-settings input[type="search"] {
+	min-height: 36px;
+}
+
+.fsed-wrap.fsed-settings select {
+	min-height: 36px;
+	padding-right: 32px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23646970' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	background-size: 16px 16px;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.fsed-wrap.fsed-settings textarea {
+	width: 100%;
+	resize: vertical;
+}
+
+.fsed-wrap.fsed-settings textarea.code {
+	font-family: var(--s-code);
+}
+
+.fsed-wrap.fsed-settings input.small-text {
+	width: 90px;
+	max-width: 90px;
+}
+
+.fsed-wrap.fsed-settings input.regular-text {
+	width: 320px;
+	max-width: 100%;
+}
+
+.fsed-wrap.fsed-settings textarea.large-text {
+	width: 100%;
+	max-width: 100%;
+}
+
+.fsed-wrap.fsed-settings input::placeholder,
+.fsed-wrap.fsed-settings textarea::placeholder {
+	color: #8c8f94;
+}
+
+.fsed-wrap.fsed-settings input[type="text"]:focus,
+.fsed-wrap.fsed-settings input[type="number"]:focus,
+.fsed-wrap.fsed-settings input[type="email"]:focus,
+.fsed-wrap.fsed-settings input[type="url"]:focus,
+.fsed-wrap.fsed-settings input[type="password"]:focus,
+.fsed-wrap.fsed-settings input[type="search"]:focus,
+.fsed-wrap.fsed-settings select:focus,
+.fsed-wrap.fsed-settings textarea:focus {
+	outline: none;
+	border-color: var(--s-accent);
+	box-shadow: 0 0 0 1px var(--s-accent);
+}
+
+/* ---------- Custom checkbox ---------- */
+.fsed-wrap.fsed-settings input[type="checkbox"] {
+	-webkit-appearance: none;
+	appearance: none;
+	box-sizing: border-box;
+	width: 18px;
+	height: 18px;
+	min-width: 18px;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+	background-color: #ffffff;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 12px 12px;
+	border: 1.5px solid #8c8f94;
+	border-radius: 4px;
+	cursor: pointer;
+	transition:
+		background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out,
+		box-shadow 0.15s ease-in-out;
+	flex-shrink: 0;
+}
+
+.fsed-wrap.fsed-settings input[type="checkbox"]:hover:not(:disabled) {
+	border-color: var(--s-accent);
+}
+
+.fsed-wrap.fsed-settings input[type="checkbox"]:focus-visible:not(:disabled) {
+	outline: none;
+	border-color: var(--s-accent);
+	box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.25);
+}
+
+.fsed-wrap.fsed-settings input[type="checkbox"]:checked {
+	background-color: var(--s-accent);
+	border-color: var(--s-accent);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M3 8.5l3.5 3.5L13 5'/%3E%3C/svg%3E");
+}
+
+.fsed-wrap.fsed-settings input[type="checkbox"]:checked:hover:not(:disabled) {
+	background-color: var(--s-accent-hover);
+	border-color: var(--s-accent-hover);
+}
+
+.fsed-wrap.fsed-settings input[type="checkbox"]:checked:focus-visible:not(:disabled) {
+	border-color: var(--s-accent-hover);
+	box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.25);
+}
+
+/* Indeterminate (partial "select all" state) */
+.fsed-wrap.fsed-settings input[type="checkbox"]:indeterminate {
+	background-color: var(--s-accent);
+	border-color: var(--s-accent);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' d='M4 8h8'/%3E%3C/svg%3E");
+}
+
+/* Disabled */
+.fsed-wrap.fsed-settings input[type="checkbox"]:disabled {
+	background-color: #f6f7f7;
+	border-color: #dcdcde;
+	cursor: default;
+	opacity: 0.75;
+}
+
+.fsed-wrap.fsed-settings input[type="checkbox"]:checked:disabled,
+.fsed-wrap.fsed-settings input[type="checkbox"]:indeterminate:disabled {
+	background-color: #a7aaad;
+	border-color: #a7aaad;
+	opacity: 0.75;
+}
+
+/* ---------- Radio (kept on native accent) ---------- */
+.fsed-wrap.fsed-settings input[type="radio"] {
+	width: 16px;
+	height: 16px;
+	margin: 0;
+	accent-color: var(--s-accent);
+	cursor: pointer;
+}
+
+.fsed-wrap.fsed-settings input[type="radio"]:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+/* ---------- Description text ---------- */
+.fsed-wrap.fsed-settings .description {
+	margin: 6px 0 0;
+	color: var(--s-muted);
+	font-size: 12px;
+	line-height: 1.5;
+	font-style: normal;
+}
+
+/* ---------- Preview block ---------- */
+.fsed-wrap.fsed-settings .fsed-preview {
+	margin: 0;
+	padding: 14px 16px;
+	color: var(--s-text);
+	font-family: var(--s-code);
+	font-size: 13px;
+	line-height: 1.6;
+	overflow: auto;
+	background: var(--s-bar);
+	border: 1px solid var(--s-line);
+	border-radius: 4px;
+	white-space: pre;
+	tab-size: 4;
+}
+.fsed-wrap.fsed-settings .fsed-preview.is-dark {
+    background: #11151c;
+    color: #fff;
+}
+
+/* ---------- Checkbox row ---------- */
+.fsed-wrap.fsed-settings .fsed-check {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	color: var(--s-text);
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.5;
+	cursor: pointer;
+}
+
+.fsed-wrap.fsed-settings .fsed-check input[type="checkbox"] {
+	flex: 0 0 16px;
+	margin-top: 2px;
+}
+
+/* ---------- Matrix tables ---------- */
+.fsed-wrap.fsed-settings .fsed-matrix-wrap {
+	margin: 0 0 16px;
+	overflow-x: auto;
+	border: 1px solid var(--s-line);
+	border-radius: 4px;
+	background: var(--s-bg);
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix {
+	width: 100%;
+	margin: 0;
+	border-collapse: collapse;
+	border: 0;
+	color: var(--s-text);
+	background: transparent;
+	box-shadow: none;
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix th,
+.fsed-wrap.fsed-settings .fsed-matrix td {
+	padding: 10px 12px;
+	color: var(--s-text);
+	font-size: 13px;
+	line-height: 1.4;
+	text-align: center;
+	vertical-align: middle;
+	border: 0;
+	border-bottom: 1px solid var(--s-line-soft);
+	background: transparent;
+	box-shadow: none;
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix th:first-child,
+.fsed-wrap.fsed-settings .fsed-matrix td:first-child {
+	text-align: left;
+	min-width: 160px;
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix thead th {
+	color: var(--s-text);
+	font-weight: 600;
+	background: var(--s-bar);
+	border-bottom: 1px solid var(--s-line);
+	white-space: nowrap;
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix tbody tr:last-child th,
+.fsed-wrap.fsed-settings .fsed-matrix tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix.striped tbody tr:nth-child(odd) > th,
+.fsed-wrap.fsed-settings .fsed-matrix.striped tbody tr:nth-child(odd) > td {
+	background: var(--s-bg);
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix.striped tbody tr:nth-child(even) > th,
+.fsed-wrap.fsed-settings .fsed-matrix.striped tbody tr:nth-child(even) > td {
+	background: var(--s-bar);
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix tbody tr:hover > th,
+.fsed-wrap.fsed-settings .fsed-matrix tbody tr:hover > td {
+	background: #f0f6fc;
+}
+
+.fsed-wrap.fsed-settings .fsed-matrix tbody th {
+	font-weight: 600;
+}
+
+/* ---------- Blocked note ---------- */
+.fsed-wrap.fsed-settings .fsed-blocked-note {
+	display: inline-block;
+	margin-top: 4px;
+	color: var(--s-warn-text) !important;
+	font-size: 11px !important;
+	font-weight: 400 !important;
+	font-style: normal;
+	line-height: 1.4;
+}
+
+/* ---------- Empty state ---------- */
+.fsed-wrap.fsed-settings .fsed-empty {
+	margin: 0 0 16px;
+	padding: 16px;
+	color: var(--s-muted);
+	font-size: 13px;
+	text-align: center;
+	background: var(--s-bar);
+	border: 1px dashed var(--s-line);
+	border-radius: 4px;
+}
+
+/* ---------- Buttons ---------- */
+.fsed-wrap.fsed-settings .button,
+.fsed-wrap.fsed-settings .button.button-secondary,
+.fsed-wrap.fsed-settings .button.button-primary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	min-height: 32px;
+	margin: 0;
+	padding: 0 14px;
+	color: var(--s-accent);
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	text-decoration: none;
+	text-shadow: none;
+	background: var(--s-bg);
+	border: 1px solid var(--s-accent);
+	border-radius: 3px;
+	box-shadow: none;
+	cursor: pointer;
+	transition: background 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+.fsed-wrap.fsed-settings .button:hover:not(:disabled),
+.fsed-wrap.fsed-settings .button:focus:not(:disabled) {
+	color: #fff;
+	background: var(--s-accent-hover);
+	border-color: var(--s-accent-hover);
+	outline: none;
+	box-shadow: none;
+}
+
+.fsed-wrap.fsed-settings .button:focus-visible:not(:disabled) {
+	outline: 2px solid var(--s-accent);
+	outline-offset: 1px;
+}
+
+.fsed-wrap.fsed-settings .button:disabled {
+	color: #a7aaad;
+	background: var(--s-bar);
+	border-color: var(--s-line);
+	opacity: 1;
+	cursor: default;
+}
+
+.fsed-wrap.fsed-settings .button.button-primary {
+	color: #fff;
+	background: var(--s-accent);
+	border-color: var(--s-accent);
+}
+
+.fsed-wrap.fsed-settings .button.button-primary:hover:not(:disabled),
+.fsed-wrap.fsed-settings .button.button-primary:focus:not(:disabled) {
+	color: #fff;
+	background: var(--s-accent-hover);
+	border-color: var(--s-accent-hover);
+}
+
+/* ---------- About section ---------- */
+.fsed-wrap.fsed-settings .fsed-about-head {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.fsed-wrap.fsed-settings .fsed-about-logo {
+	flex: 0 0 auto;
+	width: 96px;
+	height: 96px;
+	border-radius: 8px;
+	overflow: hidden;
+	background: var(--s-bar);
+	border: 1px solid var(--s-line);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fsed-wrap.fsed-settings .fsed-about-logo img {
+	display: block;
+	width: 96px;
+	height: 96px;
+	border-radius: 8px;
+	object-fit: cover;
+}
+
+.fsed-wrap.fsed-settings .fsed-about-text {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.fsed-wrap.fsed-settings .fsed-about-text h2 {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.fsed-wrap.fsed-settings .fsed-about-version {
+	display: inline-flex;
+	align-items: center;
+	padding: 2px 8px;
+	color: var(--s-muted);
+	font-family: var(--s-code);
+	font-size: 11px;
+	font-weight: 600;
+	background: var(--s-bar);
+	border: 1px solid var(--s-line);
+	border-radius: 999px;
+	line-height: 1.4;
+}
+
+.fsed-wrap.fsed-settings .fsed-about-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 12px 0 0;
+}
+
+/* ---------- Image placeholder ---------- */
+.fsed-wrap.fsed-settings .fsed-img-placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	padding: 8px;
+	color: var(--s-muted);
+	font-family: var(--s-code);
+	font-size: 10px;
+	font-weight: 500;
+	line-height: 1.4;
+	text-align: center;
+	word-break: break-all;
+	border-radius: inherit;
+	background: var(--s-bar);
+	border: 1px dashed var(--s-line);
+}
+
+/* ---------- Plugin grid ---------- */
+.fsed-wrap.fsed-settings .fsed-plugin-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 12px;
+}
+
+.fsed-wrap.fsed-settings .fsed-plugin-card {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 16px;
+	background: var(--s-bg);
+	border: 1px solid var(--s-line);
+	border-radius: 6px;
+	transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.fsed-wrap.fsed-settings .fsed-plugin-card:hover {
+	border-color: #c3c4c7;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.fsed-wrap.fsed-settings .fsed-plugin-icon {
+	width: 64px;
+	height: 64px;
+	border-radius: 8px;
+	overflow: hidden;
+	background: var(--s-bar);
+	border: 1px solid var(--s-line);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fsed-wrap.fsed-settings .fsed-plugin-icon img {
+	display: block;
+	width: 64px;
+	height: 64px;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.fsed-wrap.fsed-settings .fsed-plugin-card h3 {
+	margin: 0;
+}
+
+.fsed-wrap.fsed-settings .fsed-plugin-card p {
+	margin: 0;
+	color: var(--s-muted);
+	font-size: 12px;
+	line-height: 1.5;
+	flex: 1 1 auto;
+}
+
+.fsed-wrap.fsed-settings .fsed-plugin-card .button {
+	align-self: flex-start;
+}
+
+/* ---------- Save bar ---------- */
+.fsed-wrap.fsed-settings .fsed-savebar {
+	position: sticky;
+	bottom: 0;
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin: 20px -24px -24px;
+	padding: 14px 24px;
+	background: var(--s-bar);
+	border-top: 1px solid var(--s-line);
+	border-radius: 0 0 8px 8px;
+	z-index: 5;
+}
+
+.fsed-wrap.fsed-settings .fsed-savebar .button,
+.fsed-wrap.fsed-settings .fsed-savebar .button.button-primary {
+	min-height: 36px;
+	padding: 0 18px;
+	font-size: 13px;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 782px) {
+	.fsed-wrap.fsed-settings {
+		margin: 10px 10px 20px;
+		padding: 16px;
+		border-radius: 6px;
+	}
+
+	.fsed-wrap.fsed-settings .fsed-card {
+		padding: 16px;
+	}
+
+	.fsed-wrap.fsed-settings .fsed-tab-nav .nav-tab {
+		padding: 9px 12px;
+		font-size: 12px;
+	}
+
+	.fsed-wrap.fsed-settings .fsed-about-head {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.fsed-wrap.fsed-settings .fsed-about-logo,
+	.fsed-wrap.fsed-settings .fsed-about-logo img {
+		width: 72px;
+		height: 72px;
+	}
+
+	.fsed-wrap.fsed-settings input.regular-text {
+		width: 100%;
+	}
+
+	.fsed-wrap.fsed-settings .fsed-savebar {
+		margin: 16px -16px -16px;
+		padding: 12px 16px;
+		border-radius: 0 0 6px 6px;
+	}
+
+	.fsed-wrap.fsed-settings .fsed-matrix th:first-child,
+	.fsed-wrap.fsed-settings .fsed-matrix td:first-child {
+		min-width: 120px;
+	}
+}
+
+
+
+
+
+
+/* ============================================================
+   FileSmith Editor — Activity Log page (light theme)
+   Scoped to .fsed-wrap.fsed-log — nothing else affected.
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
+.fsed-wrap.fsed-log {
+	--l-bg: #ffffff;
+	--l-bar: #f6f7f7;
+	--l-panel: #f0f0f1;
+	--l-input: #ffffff;
+	--l-line: #dcdcde;
+	--l-line-soft: #f0f0f1;
+	--l-text: #1d2327;
+	--l-muted: #646970;
+	--l-accent: #2271b1;
+	--l-accent-hover: #135e96;
+	--l-danger: #d63638;
+	--l-danger-hover: #b32d2e;
+	--l-ok: #00a32a;
+	--l-warn-bg: #fcf9e8;
+	--l-warn-text: #7c5700;
+	--l-warn-border: #dba617;
+	--l-code: Consolas, Monaco, "Andale Mono", monospace;
+	--l-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Wrapper ---------- */
+.fsed-wrap.fsed-log {
+	box-sizing: border-box;
+	margin: 10px 20px 20px 2px;
+	padding: 20px 24px 24px;
+	color: var(--l-text);
+	background: var(--l-bg);
+	border: 1px solid var(--l-line);
+	border-radius: 8px;
+	box-shadow: var(--l-shadow);
+}
+
+.fsed-wrap.fsed-log *,
+.fsed-wrap.fsed-log *::before,
+.fsed-wrap.fsed-log *::after {
+	box-sizing: border-box;
+}
+
+/* ---------- Headings ---------- */
+.fsed-wrap.fsed-log h1 {
+	margin: 0 0 16px;
+	padding: 0;
+	color: var(--l-text);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+/* ---------- Notices ---------- */
+.fsed-wrap.fsed-log .notice {
+	margin: 0 0 16px;
+	padding: 10px 14px;
+	color: var(--l-text);
+	background: var(--l-bg);
+	border: 1px solid var(--l-line);
+	border-left: 4px solid var(--l-accent);
+	border-radius: 4px;
+	box-shadow: none;
+}
+
+.fsed-wrap.fsed-log .notice p {
+	margin: 0;
+	color: inherit;
+}
+
+.fsed-wrap.fsed-log .notice-success {
+	border-left-color: var(--l-ok);
+}
+
+.fsed-wrap.fsed-log .notice-warning {
+	color: var(--l-warn-text);
+	background: var(--l-warn-bg);
+	border-left-color: var(--l-warn-border);
+}
+
+.fsed-wrap.fsed-log .notice-error {
+	border-left-color: var(--l-danger);
+}
+
+.fsed-wrap.fsed-log .notice-dismiss::before {
+	color: var(--l-muted);
+}
+
+/* ============================================================
+   TOOLBAR (filter form + clear button)
+   ============================================================ */
+.fsed-wrap.fsed-log .fsed-log-tools {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px 16px;
+	margin: 0 0 16px;
+	padding: 12px 14px;
+	background: var(--l-bar);
+	border: 1px solid var(--l-line);
+	border-radius: 6px;
+}
+
+.fsed-wrap.fsed-log .fsed-log-tools form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+}
+
+/* Selects inside the toolbar */
+.fsed-wrap.fsed-log .fsed-log-tools select {
+	min-height: 32px;
+	min-width: 160px;
+	padding: 4px 28px 4px 8px;
+	color: var(--l-text);
+	font-family: inherit;
+	font-size: 13px;
+	line-height: 1.4;
+	background-color: var(--l-input);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23646970' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	background-size: 14px 14px;
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	-webkit-appearance: none;
+	appearance: none;
+	transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.fsed-wrap.fsed-log .fsed-log-tools select:focus {
+	outline: none;
+	border-color: var(--l-accent);
+	box-shadow: 0 0 0 1px var(--l-accent);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.fsed-wrap.fsed-log .button,
+.fsed-wrap.fsed-log .button.button-secondary,
+.fsed-wrap.fsed-log .button.button-primary,
+.fsed-wrap.fsed-log .button.fsed-button-danger {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	min-height: 32px;
+	margin: 0;
+	padding: 0 14px;
+	color: var(--l-accent);
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	text-decoration: none;
+	text-shadow: none;
+	background: var(--l-bg);
+	border: 1px solid var(--l-accent);
+	border-radius: 3px;
+	box-shadow: none;
+	cursor: pointer;
+	transition: background 0.1s ease-in-out, color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+}
+
+.fsed-wrap.fsed-log .button:hover:not(:disabled),
+.fsed-wrap.fsed-log .button:focus:not(:disabled) {
+	color: #fff;
+	background: var(--l-accent-hover);
+	border-color: var(--l-accent-hover);
+	outline: none;
+	box-shadow: none;
+}
+
+.fsed-wrap.fsed-log .button:focus-visible:not(:disabled) {
+	outline: 2px solid var(--l-accent);
+	outline-offset: 1px;
+}
+
+.fsed-wrap.fsed-log .button:disabled {
+	color: #a7aaad;
+	background: var(--l-bar);
+	border-color: var(--l-line);
+	cursor: default;
+}
+
+.fsed-wrap.fsed-log .button.button-primary {
+	color: #fff;
+	background: var(--l-accent);
+	border-color: var(--l-accent);
+}
+
+.fsed-wrap.fsed-log .button.button-primary:hover:not(:disabled) {
+	color: #fff;
+	background: var(--l-accent-hover);
+	border-color: var(--l-accent-hover);
+}
+
+/* Danger (clear log) */
+.fsed-wrap.fsed-log .button.fsed-button-danger {
+	color: var(--l-danger);
+	background: var(--l-bg);
+	border-color: var(--l-danger);
+}
+
+.fsed-wrap.fsed-log .button.fsed-button-danger:hover:not(:disabled),
+.fsed-wrap.fsed-log .button.fsed-button-danger:focus:not(:disabled) {
+	color: #fff;
+	background: var(--l-danger-hover);
+	border-color: var(--l-danger-hover);
+}
+
+/* ============================================================
+   LOG TABLE
+   ============================================================ */
+.fsed-wrap.fsed-log .fsed-log-table.widefat {
+	width: 100%;
+	margin: 0;
+	border-collapse: collapse;
+	border: 1px solid var(--l-line);
+	border-radius: 6px;
+	color: var(--l-text);
+	background: var(--l-bg);
+	box-shadow: none;
+	overflow: hidden;
+}
+
+.fsed-wrap.fsed-log .fsed-log-table th,
+.fsed-wrap.fsed-log .fsed-log-table td {
+	padding: 10px 12px;
+	color: var(--l-text);
+	font-size: 13px;
+	line-height: 1.5;
+	text-align: start;
+	vertical-align: top;
+	border: 0;
+	border-bottom: 1px solid var(--l-line-soft);
+	background: transparent;
+	box-shadow: none;
+	word-break: break-word;
+}
+
+.fsed-wrap.fsed-log .fsed-log-table thead th {
+	color: var(--l-text);
+	font-weight: 600;
+	background: var(--l-bar);
+	border-bottom: 1px solid var(--l-line);
+	white-space: nowrap;
+}
+
+.fsed-wrap.fsed-log .fsed-log-table tbody tr:last-child th,
+.fsed-wrap.fsed-log .fsed-log-table tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+.fsed-wrap.fsed-log .fsed-log-table.striped tbody tr:nth-child(odd) > td {
+	background: var(--l-bg);
+}
+
+.fsed-wrap.fsed-log .fsed-log-table.striped tbody tr:nth-child(even) > td {
+	background: var(--l-bar);
+}
+
+.fsed-wrap.fsed-log .fsed-log-table tbody tr:hover > td {
+	background: #f0f6fc;
+}
+
+/* Time column */
+.fsed-wrap.fsed-log .fsed-log-table time {
+	color: var(--l-muted);
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+/* Path column */
+.fsed-wrap.fsed-log .fsed-log-path {
+	font-family: var(--l-code);
+	font-size: 12px;
+}
+
+.fsed-wrap.fsed-log .fsed-log-path .description {
+	display: block;
+	margin: 2px 0 0;
+	color: var(--l-muted);
+	font-family: inherit;
+	font-style: normal;
+}
+
+/* Empty state row */
+.fsed-wrap.fsed-log .fsed-log-table tbody td[colspan] {
+	padding: 24px 12px;
+	color: var(--l-muted);
+	font-size: 13px;
+	text-align: center;
+	background: var(--l-bg) !important;
+}
+
+/* ============================================================
+   PAGINATION (tablenav + paginate_links output)
+   ============================================================ */
+.fsed-wrap.fsed-log .tablenav.bottom {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin: 12px 0 0;
+	padding: 0;
+	height: auto;
+}
+
+.fsed-wrap.fsed-log .tablenav .tablenav-pages {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	margin: 0;
+	float: none;
+	font-size: 13px;
+	line-height: 1;
+}
+
+.fsed-wrap.fsed-log .tablenav-pages .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 30px;
+	height: 30px;
+	padding: 0 8px;
+	color: var(--l-accent);
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	text-decoration: none;
+	background: var(--l-bg);
+	border: 1px solid var(--l-line);
+	border-radius: 3px;
+}
+
+.fsed-wrap.fsed-log .tablenav-pages a.page-numbers:hover,
+.fsed-wrap.fsed-log .tablenav-pages a.page-numbers:focus {
+	color: #fff;
+	background: var(--l-accent);
+	border-color: var(--l-accent);
+	outline: none;
+}
+
+.fsed-wrap.fsed-log .tablenav-pages .page-numbers.current {
+	color: #fff;
+	background: var(--l-accent);
+	border-color: var(--l-accent);
+	cursor: default;
+}
+
+.fsed-wrap.fsed-log .tablenav-pages .page-numbers.dots {
+	color: var(--l-muted);
+	background: transparent;
+	border-color: transparent;
+	cursor: default;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media screen and (max-width: 782px) {
+	.fsed-wrap.fsed-log {
+		margin: 10px 10px 20px;
+		padding: 16px;
+		border-radius: 6px;
+	}
+
+	.fsed-wrap.fsed-log .fsed-log-tools {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.fsed-wrap.fsed-log .fsed-log-tools form {
+		width: 100%;
+	}
+
+	.fsed-wrap.fsed-log .fsed-log-tools select {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.fsed-wrap.fsed-log .fsed-log-tools .button {
+		width: 100%;
+		justify-content: center;
+	}
+
+	/* Table: horizontal scroll on small screens */
+	.fsed-wrap.fsed-log .fsed-log-table {
+		display: block;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+
+	.fsed-wrap.fsed-log .fsed-log-table thead,
+	.fsed-wrap.fsed-log .fsed-log-table tbody,
+	.fsed-wrap.fsed-log .fsed-log-table tr,
+	.fsed-wrap.fsed-log .fsed-log-table th,
+	.fsed-wrap.fsed-log .fsed-log-table td {
+		white-space: nowrap;
+	}
+
+	.fsed-wrap.fsed-log .fsed-log-path {
+		white-space: normal;
+		min-width: 240px;
+	}
+
+	.fsed-wrap.fsed-log .tablenav.bottom {
+		justify-content: center;
+	}
+}
+
+/* Image preview, shown in place of the editor. */
+.fsed-image-preview {
+	position: absolute;
+	inset: 0;
+	z-index: 5;
+	display: flex;
+	flex-direction: column;
+	background: #f6f7f7;
+	color: #50575e;
+}
+
+.fsed-image-preview[hidden] {
+	display: none;
+}
+
+.fsed-theme-dark .fsed-image-preview {
+	background: #1e1e1e;
+	color: #c3c4c7;
+}
+
+.fsed-image-stage {
+	flex: 1;
+	min-height: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: auto;
+	padding: 16px;
+	background-image: linear-gradient(45deg, rgba(128, 128, 128, 0.15) 25%, transparent 25%, transparent 75%, rgba(128, 128, 128, 0.15) 75%), linear-gradient(45deg, rgba(128, 128, 128, 0.15) 25%, transparent 25%, transparent 75%, rgba(128, 128, 128, 0.15) 75%);
+	background-size: 16px 16px;
+	background-position: 0 0, 8px 8px;
+}
+
+.fsed-image-stage img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.fsed-image-info {
+	margin: 0;
+	padding: 8px 12px;
+	text-align: center;
+	font-size: 12px;
+	border-top: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+/* Quick open (Ctrl+P) */
+.fsed-qo {
+	position: fixed;
+	inset: 0;
+	z-index: 100100;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 12vh 16px 16px;
+	background: rgba(0, 0, 0, 0.35);
+}
+
+.fsed-qo[hidden] {
+	display: none;
+}
+
+.fsed-qo-box {
+	width: 100%;
+	max-width: 560px;
+	overflow: hidden;
+	background: #fff;
+	color: #1d2327;
+	border: 1px solid #c3c4c7;
+	border-radius: 6px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.fsed-qo-input {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 12px 14px;
+	font-size: 15px;
+	border: 0;
+	border-bottom: 1px solid #dcdcde;
+	border-radius: 0;
+	box-shadow: none;
+	outline: 0;
+	background: transparent;
+	color: inherit;
+}
+
+.fsed-qo-input:focus {
+	box-shadow: none;
+	outline: 0;
+}
+
+.fsed-qo-list {
+	max-height: 340px;
+	margin: 0;
+	padding: 4px 0;
+	overflow-y: auto;
+	list-style: none;
+}
+
+.fsed-qo-item,
+.fsed-qo-none {
+	margin: 0;
+	padding: 7px 14px;
+}
+
+.fsed-qo-item {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	cursor: pointer;
+}
+
+.fsed-qo-item.is-active {
+	background: #2271b1;
+	color: #fff;
+}
+
+.fsed-qo-name {
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.fsed-qo-dir {
+	min-width: 0;
+	overflow: hidden;
+	font-size: 12px;
+	opacity: 0.7;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fsed-qo-none {
+	color: #646970;
+}
+
+.fsed-theme-dark .fsed-qo-box {
+	background: #252526;
+	color: #d4d4d4;
+	border-color: #3c3c3c;
+}
+
+.fsed-theme-dark .fsed-qo-input {
+	border-bottom-color: #3c3c3c;
+}
+
+.fsed-theme-dark .fsed-qo-none {
+	color: #9da0a6;
+}
+
+/* Free version: upgrade hints. */
+.fsed-pro-hint {
+	margin: 0 0 12px;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.fsed-modal-footer .fsed-pro-hint {
+	margin: 0 auto 0 0;
+	align-self: center;
+}
+
+.fsed-pro-tag {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 2px 8px;
+	border-radius: 999px;
+	background: #e8501a;
+	color: #fff;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	line-height: 1.4;
+	vertical-align: middle;
+}
+
+.fsed-pro-card .button {
+	margin-top: 4px;
+}
+
+.fsed-backup-preview textarea {
+	height: 100%;
+}

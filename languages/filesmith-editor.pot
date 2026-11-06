@@ -1,0 +1,1115 @@
+# Copyright (C) 2026 WpWebGuru
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: FileSmith Editor 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/filesmith-editor\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-17T11:39:59+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: filesmith-editor\n"
+
+#. Plugin Name of the plugin
+#: filesmith-editor.php
+#: includes/Admin/class-admin-menu.php:95
+#: includes/Admin/class-admin-menu.php:107
+#: templates/editor-page.php:18
+msgid "FileSmith Editor"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: filesmith-editor.php
+msgid "https://wpwebguru.com/"
+msgstr ""
+
+#. Description of the plugin
+#: filesmith-editor.php
+msgid "A theme and plugin file editor with the native editor look, plus create, upload, rename, move, delete, backup, trash and zip download tools."
+msgstr ""
+
+#. Author of the plugin
+#: filesmith-editor.php
+msgid "WpWebGuru"
+msgstr ""
+
+#: includes/Admin/class-admin-menu.php:96
+msgid "FileSmith"
+msgstr ""
+
+#: includes/Admin/class-admin-menu.php:108
+#: templates/settings-page.php:22
+msgid "Editor"
+msgstr ""
+
+#: includes/Admin/class-admin-menu.php:116
+#: templates/settings-page.php:31
+msgid "FileSmith Settings"
+msgstr ""
+
+#: includes/Admin/class-admin-menu.php:117
+msgid "Settings"
+msgstr ""
+
+#: includes/Admin/class-admin-menu.php:125
+#: templates/log-page.php:25
+msgid "FileSmith Activity Log"
+msgstr ""
+
+#: includes/Admin/class-admin-menu.php:126
+msgid "Activity Log"
+msgstr ""
+
+#: includes/Admin/class-assets.php:121
+#: templates/editor-page.php:42
+msgid "Loading files…"
+msgstr ""
+
+#: includes/Admin/class-assets.php:122
+msgid "No files found."
+msgstr ""
+
+#: includes/Admin/class-assets.php:123
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: includes/Admin/class-assets.php:124
+#: templates/partials/toolbar.php:51
+msgid "Save file"
+msgstr ""
+
+#: includes/Admin/class-assets.php:125
+msgid "Saving…"
+msgstr ""
+
+#: includes/Admin/class-assets.php:126
+msgid "File saved."
+msgstr ""
+
+#: includes/Admin/class-assets.php:127
+msgid "This file is not writable, so it is open in read-only mode."
+msgstr ""
+
+#: includes/Admin/class-assets.php:128
+msgid "You have unsaved changes. Discard them?"
+msgstr ""
+
+#: includes/Admin/class-assets.php:129
+msgid "Loading backups…"
+msgstr ""
+
+#: includes/Admin/class-assets.php:130
+msgid "No backups yet. A backup is created each time you save a changed file."
+msgstr ""
+
+#: includes/Admin/class-assets.php:131
+msgid "Select a backup to preview it."
+msgstr ""
+
+#: includes/Admin/class-assets.php:132
+msgid "Backup loaded into the editor. Review it, then click Save to apply it."
+msgstr ""
+
+#: includes/Admin/class-assets.php:133
+#: templates/partials/file-tree.php:20
+#: templates/partials/file-tree.php:22
+msgid "New file"
+msgstr ""
+
+#: includes/Admin/class-assets.php:134
+#: templates/partials/file-tree.php:24
+#: templates/partials/file-tree.php:26
+msgid "New folder"
+msgstr ""
+
+#: includes/Admin/class-assets.php:135
+msgid "File name"
+msgstr ""
+
+#: includes/Admin/class-assets.php:136
+msgid "Folder name"
+msgstr ""
+
+#. translators: %s: folder path.
+#: includes/Admin/class-assets.php:138
+#, php-format
+msgid "It will be created in: %s"
+msgstr ""
+
+#: includes/Admin/class-assets.php:139
+msgid "It will be created in the root folder."
+msgstr ""
+
+#: includes/Admin/class-assets.php:140
+#: includes/class-settings.php:42
+msgid "Create"
+msgstr ""
+
+#: includes/Admin/class-assets.php:141
+#: includes/Admin/class-assets.php:155
+#: includes/class-settings.php:44
+#: templates/partials/file-tree.php:33
+#: templates/partials/file-tree.php:35
+msgid "Rename"
+msgstr ""
+
+#: includes/Admin/class-assets.php:142
+msgid "New name"
+msgstr ""
+
+#: includes/Admin/class-assets.php:143
+msgid "New file name"
+msgstr ""
+
+#: includes/Admin/class-assets.php:144
+msgid "Duplicate file"
+msgstr ""
+
+#: includes/Admin/class-assets.php:145
+#: templates/partials/file-tree.php:41
+#: templates/partials/file-tree.php:43
+msgid "Duplicate"
+msgstr ""
+
+#: includes/Admin/class-assets.php:146
+#: templates/partials/file-tree.php:28
+#: templates/partials/file-tree.php:30
+msgid "Upload files"
+msgstr ""
+
+#: includes/Admin/class-assets.php:147
+#: includes/class-settings.php:43
+msgid "Upload"
+msgstr ""
+
+#: includes/Admin/class-assets.php:148
+msgid "Choose files"
+msgstr ""
+
+#. translators: %s: folder path.
+#: includes/Admin/class-assets.php:150
+#, php-format
+msgid "The files will be uploaded to: %s"
+msgstr ""
+
+#: includes/Admin/class-assets.php:151
+msgid "The files will be uploaded to the root folder."
+msgstr ""
+
+#: includes/Admin/class-assets.php:152
+msgid "Choose at least one file."
+msgstr ""
+
+#. translators: %d: number of uploaded files.
+#: includes/Admin/class-assets.php:154
+#, php-format
+msgid "%d file(s) uploaded."
+msgstr ""
+
+#: includes/Admin/class-assets.php:156
+#: includes/Admin/class-assets.php:158
+#: includes/class-settings.php:45
+#: templates/partials/file-tree.php:37
+#: templates/partials/file-tree.php:39
+msgid "Move"
+msgstr ""
+
+#: includes/Admin/class-assets.php:157
+msgid "Move to"
+msgstr ""
+
+#: includes/Admin/class-assets.php:159
+msgid "Root folder"
+msgstr ""
+
+#: includes/Admin/class-assets.php:160
+msgid "There is no other folder to move this item to."
+msgstr ""
+
+#: includes/Admin/class-assets.php:161
+#: includes/Admin/class-assets.php:162
+#: includes/class-settings.php:46
+#: templates/partials/file-tree.php:46
+#: templates/partials/file-tree.php:48
+msgid "Delete"
+msgstr ""
+
+#. translators: %s: file path.
+#: includes/Admin/class-assets.php:164
+#, php-format
+msgid "Delete the file %s? This cannot be undone."
+msgstr ""
+
+#. translators: %s: folder path.
+#: includes/Admin/class-assets.php:166
+#, php-format
+msgid "Delete the folder %s and everything inside it? This cannot be undone."
+msgstr ""
+
+#: includes/Admin/class-assets.php:167
+#: includes/class-settings.php:49
+#: templates/partials/toolbar.php:50
+msgid "Download zip"
+msgstr ""
+
+#: includes/Admin/class-assets.php:168
+msgid "Preparing zip…"
+msgstr ""
+
+#: includes/Admin/class-assets.php:169
+msgid "You have unsaved changes. They will not be included in the zip. Continue?"
+msgstr ""
+
+#. translators: %s: theme or plugin name.
+#: includes/Admin/class-assets.php:171
+#, php-format
+msgid "Editing %s (active)"
+msgstr ""
+
+#. translators: %s: theme or plugin name.
+#: includes/Admin/class-assets.php:173
+#, php-format
+msgid "Editing %s (inactive)"
+msgstr ""
+
+#. translators: %s: name of the user who saved the change.
+#: includes/Admin/class-assets.php:175
+#, php-format
+msgid "Saved by %s"
+msgstr ""
+
+#: includes/Admin/class-assets.php:176
+msgid "Saved by an unknown user"
+msgstr ""
+
+#: includes/Admin/class-assets.php:177
+msgid "Loading file…"
+msgstr ""
+
+#. translators: 1: line number, 2: column number.
+#: includes/Admin/class-assets.php:179
+#, php-format
+msgid "Ln %1$d, Col %2$d"
+msgstr ""
+
+#: includes/Admin/class-assets.php:180
+msgid "Unsaved changes"
+msgstr ""
+
+#: includes/Admin/class-assets.php:181
+msgid "No changes"
+msgstr ""
+
+#: includes/Admin/class-assets.php:182
+msgid "Editable"
+msgstr ""
+
+#: includes/Admin/class-assets.php:183
+msgid "Read-only"
+msgstr ""
+
+#: includes/Admin/class-assets.php:184
+msgid "You can view this file, but you do not have permission to edit it."
+msgstr ""
+
+#: includes/Admin/class-assets.php:185
+msgid "Select a file from the list to view it."
+msgstr ""
+
+#. translators: %s: file name.
+#: includes/Admin/class-assets.php:187
+#, php-format
+msgid "Close %s"
+msgstr ""
+
+#: includes/Admin/class-assets.php:188
+msgid "This file has unsaved changes. Close it and discard them?"
+msgstr ""
+
+#: includes/Admin/class-assets.php:189
+msgid "Too many files are open. Close a tab first."
+msgstr ""
+
+#. translators: %s: file path.
+#: includes/Admin/class-assets.php:191
+#, php-format
+msgid "Move the file %s to the trash? You can restore it from the trash."
+msgstr ""
+
+#. translators: %s: folder path.
+#: includes/Admin/class-assets.php:193
+#, php-format
+msgid "Move the folder %s and everything inside it to the trash? You can restore it from the trash."
+msgstr ""
+
+#: includes/Admin/class-assets.php:194
+msgid "Move to trash"
+msgstr ""
+
+#: includes/Admin/class-assets.php:195
+msgid "Moved to trash."
+msgstr ""
+
+#: includes/Admin/class-assets.php:196
+msgid "Deleted."
+msgstr ""
+
+#: includes/Admin/class-assets.php:197
+#: includes/class-settings.php:48
+#: templates/partials/file-tree.php:50
+#: templates/partials/file-tree.php:52
+#: templates/partials/modals.php:52
+msgid "Trash"
+msgstr ""
+
+#: includes/Admin/class-assets.php:198
+msgid "Loading trash…"
+msgstr ""
+
+#: includes/Admin/class-assets.php:199
+msgid "The trash is empty."
+msgstr ""
+
+#: includes/Admin/class-assets.php:200
+msgid "Restore"
+msgstr ""
+
+#: includes/Admin/class-assets.php:201
+msgid "Item restored."
+msgstr ""
+
+#: includes/Admin/class-assets.php:202
+msgid "Delete permanently"
+msgstr ""
+
+#. translators: %s: file or folder path.
+#: includes/Admin/class-assets.php:204
+#, php-format
+msgid "Delete %s permanently? This cannot be undone."
+msgstr ""
+
+#: includes/Admin/class-assets.php:205
+#: templates/partials/modals.php:60
+msgid "Empty trash"
+msgstr ""
+
+#: includes/Admin/class-assets.php:206
+msgid "Permanently delete everything in the trash? This cannot be undone."
+msgstr ""
+
+#. translators: %s: name of the user who deleted the item.
+#: includes/Admin/class-assets.php:208
+#, php-format
+msgid "Deleted by %s"
+msgstr ""
+
+#. translators: %d: number of files in a trashed folder.
+#: includes/Admin/class-assets.php:210
+#, php-format
+msgid "%d files"
+msgstr ""
+
+#: includes/Admin/class-assets.php:211
+msgid "Folder"
+msgstr ""
+
+#: includes/Admin/class-assets.php:212
+#: templates/partials/modals.php:31
+msgid "Backup"
+msgstr ""
+
+#: includes/Admin/class-assets.php:213
+#: templates/partials/modals.php:30
+msgid "Changes"
+msgstr ""
+
+#: includes/Admin/class-assets.php:214
+msgid "This backup is identical to the content in the editor."
+msgstr ""
+
+#: includes/Admin/class-assets.php:215
+msgid "These versions are too different or too large to compare."
+msgstr ""
+
+#: includes/Admin/class-assets.php:216
+msgid "Backup → editor: red lines are in the backup only, green lines are in the editor only."
+msgstr ""
+
+#. translators: 1: number of added lines, 2: number of removed lines.
+#: includes/Admin/class-assets.php:218
+#, php-format
+msgid "%1$d added, %2$d removed"
+msgstr ""
+
+#: includes/Admin/class-assets.php:219
+msgid "Unchanged lines hidden"
+msgstr ""
+
+#: includes/Admin/class-editor-page.php:29
+#: templates/log-page.php:87
+msgid "Theme"
+msgstr ""
+
+#: includes/Admin/class-editor-page.php:30
+#: templates/log-page.php:87
+msgid "Plugin"
+msgstr ""
+
+#: includes/Admin/class-editor-page.php:142
+#: includes/Admin/class-log-page.php:77
+#: includes/Admin/class-settings-page.php:67
+msgid "You are not allowed to access this page."
+msgstr ""
+
+#: includes/Admin/class-log-page.php:47
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: includes/Ajax/class-ajax-handler.php:142
+msgid "No content was sent."
+msgstr ""
+
+#. translators: 1: required PHP version, 2: required WordPress version.
+#: includes/class-activator.php:33
+#, php-format
+msgid "FileSmith Editor requires PHP %1$s and WordPress %2$s or higher."
+msgstr ""
+
+#: includes/class-activator.php:37
+msgid "Plugin activation error"
+msgstr ""
+
+#: includes/class-settings.php:40
+msgid "View"
+msgstr ""
+
+#: includes/class-settings.php:41
+msgid "Edit and save"
+msgstr ""
+
+#: includes/class-settings.php:47
+#: templates/partials/modals.php:18
+#: templates/partials/toolbar.php:49
+msgid "Backups"
+msgstr ""
+
+#: includes/class-settings.php:60
+msgid "Light"
+msgstr ""
+
+#: includes/class-settings.php:61
+msgid "Dark"
+msgstr ""
+
+#. translators: %s: username or email that was entered.
+#: includes/class-settings.php:267
+#, php-format
+msgid "No user found for \"%s\"."
+msgstr ""
+
+#: includes/class-settings.php:275
+msgid "Administrators always have full access, so they cannot be limited here."
+msgstr ""
+
+#: includes/Files/class-backup-manager.php:92
+msgid "Could not read the current file to back it up. The file was not saved."
+msgstr ""
+
+#: includes/Files/class-backup-manager.php:130
+msgid "Could not create the backup folder. The file was not saved."
+msgstr ""
+
+#: includes/Files/class-backup-manager.php:136
+msgid "Could not create a backup. The file was not saved."
+msgstr ""
+
+#: includes/Files/class-backup-manager.php:164
+msgid "Invalid backup."
+msgstr ""
+
+#: includes/Files/class-backup-manager.php:169
+msgid "Backup not found."
+msgstr ""
+
+#: includes/Files/class-backup-manager.php:179
+msgid "The backup could not be read."
+msgstr ""
+
+#: includes/Files/class-backup-manager.php:328
+msgid "This file has no backups."
+msgstr ""
+
+#: includes/Files/class-backup-manager.php:566
+#: includes/Files/class-file-manager.php:814
+#: includes/Files/class-trash-manager.php:536
+msgid "Could not access the filesystem. Direct file access is required."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:132
+#: includes/Files/class-file-manager.php:179
+msgid "This is not a file."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:135
+#: includes/Files/class-file-manager.php:182
+#: includes/Files/class-file-manager.php:280
+msgid "This file type cannot be edited."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:138
+msgid "This file is too large to edit."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:148
+#: includes/Files/class-file-manager.php:302
+msgid "The file could not be read."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:185
+msgid "The content is too large to save."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:188
+msgid "This file is not writable."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:213
+#: includes/Files/class-file-manager.php:400
+msgid "The file could not be saved."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:246
+#: includes/Files/class-file-manager.php:306
+msgid "The file could not be created."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:277
+msgid "Only files can be duplicated."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:283
+msgid "This file is too large to duplicate."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:292
+#: includes/Files/class-file-manager.php:391
+#: includes/Files/class-file-manager.php:598
+#: includes/Files/class-file-manager.php:648
+msgid "An item with this name already exists."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:326
+msgid "No files were selected."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:329
+msgid "Too many files. Upload fewer files at a time."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:337
+#: includes/Files/class-file-manager.php:571
+#: includes/Files/class-file-manager.php:639
+msgid "The destination is not a folder."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:357
+msgid "The file could not be uploaded."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:374
+msgid "The file is too large."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:445
+msgid "The folder could not be created."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:478
+msgid "This folder contains symbolic links and cannot be deleted here."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:497
+msgid "The item could not be deleted."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:574
+msgid "A folder cannot be moved into itself."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:612
+msgid "The item could not be moved or renamed."
+msgstr ""
+
+#: includes/Files/class-file-manager.php:767
+msgid "This item is protected and cannot be deleted, renamed or moved."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:34
+#: includes/Files/class-path-validator.php:38
+msgid "Theme not found."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:47
+msgid "Plugin not found."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:51
+msgid "Single-file plugins are not supported."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:55
+msgid "Invalid type."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:60
+msgid "The directory could not be found."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:78
+#: includes/Files/class-path-validator.php:88
+msgid "Invalid file path."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:91
+msgid "This folder is excluded in the settings."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:101
+msgid "File not found."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:106
+msgid "The parent folder does not exist."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:114
+msgid "Access to this path is not allowed."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:143
+msgid "Names may only use letters, numbers, dots, dashes and underscores, and must not start with a dot."
+msgstr ""
+
+#: includes/Files/class-path-validator.php:163
+#: includes/Files/class-path-validator.php:248
+#: includes/Files/class-path-validator.php:252
+msgid "This file type is not allowed."
+msgstr ""
+
+#. translators: 1: line number, 2: PHP error message.
+#: includes/Files/class-syntax-checker.php:72
+#, php-format
+msgid "PHP syntax error on line %1$d: %2$s. The file was not saved."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:115
+#: includes/Files/class-trash-manager.php:121
+msgid "Could not create the trash folder. Nothing was deleted."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:146
+msgid "Could not write to the trash. Nothing was deleted."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:151
+msgid "The item could not be moved to the trash."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:234
+#: includes/Files/class-trash-manager.php:239
+#: includes/Files/class-trash-manager.php:253
+msgid "This item cannot be restored."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:243
+msgid "An item with this name already exists. Rename or move it first."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:248
+msgid "The original folder could not be created."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:258
+msgid "The trashed item is missing."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:262
+msgid "The item could not be restored."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:424
+msgid "Invalid trash item."
+msgstr ""
+
+#: includes/Files/class-trash-manager.php:431
+msgid "Trash item not found."
+msgstr ""
+
+#: includes/Files/class-zip-handler.php:66
+msgid "There are no files to add to the zip."
+msgstr ""
+
+#: includes/Files/class-zip-handler.php:75
+msgid "Could not create a temporary file for the zip."
+msgstr ""
+
+#: includes/Files/class-zip-handler.php:171
+msgid "This folder is too large to download as a zip."
+msgstr ""
+
+#: includes/Files/class-zip-handler.php:177
+msgid "The folder could not be read."
+msgstr ""
+
+#: includes/Files/class-zip-handler.php:195
+#: includes/Files/class-zip-handler.php:228
+msgid "The zip file could not be created."
+msgstr ""
+
+#: includes/Files/class-zip-handler.php:201
+msgid "A file could not be added to the zip."
+msgstr ""
+
+#: includes/Files/class-zip-handler.php:207
+msgid "The zip file could not be written."
+msgstr ""
+
+#: includes/Log/class-activity-log.php:80
+msgid "Saved"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:81
+msgid "Created file"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:82
+msgid "Created folder"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:83
+msgid "Duplicated"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:84
+msgid "Uploaded"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:85
+msgid "Renamed"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:86
+msgid "Moved"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:87
+msgid "Moved to trash"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:88
+msgid "Deleted"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:89
+msgid "Restored from trash"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:90
+msgid "Deleted from trash"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:91
+msgid "Emptied trash"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:92
+msgid "Downloaded zip"
+msgstr ""
+
+#: includes/Log/class-activity-log.php:237
+#: templates/log-page.php:88
+msgid "Unknown user"
+msgstr ""
+
+#: includes/Security/class-permissions.php:156
+msgid "Security check failed. Please refresh the page and try again."
+msgstr ""
+
+#: includes/Security/class-permissions.php:164
+msgid "You do not have permission to do this."
+msgstr ""
+
+#: templates/editor-page.php:28
+msgid "Open files"
+msgstr ""
+
+#: templates/editor-page.php:31
+msgid "File content"
+msgstr ""
+
+#: templates/log-page.php:28
+msgid "The log was cleared."
+msgstr ""
+
+#: templates/log-page.php:32
+msgid "The activity log is turned off. Turn it on in FileSmith Settings to record new actions."
+msgstr ""
+
+#: templates/log-page.php:39
+msgid "Filter by action"
+msgstr ""
+
+#: templates/log-page.php:41
+msgid "All actions"
+msgstr ""
+
+#: templates/log-page.php:47
+msgid "Filter by user"
+msgstr ""
+
+#: templates/log-page.php:49
+msgid "All users"
+msgstr ""
+
+#: templates/log-page.php:55
+msgid "Filter"
+msgstr ""
+
+#: templates/log-page.php:59
+msgid "Delete every entry in the log? This cannot be undone."
+msgstr ""
+
+#: templates/log-page.php:62
+msgid "Clear log"
+msgstr ""
+
+#: templates/log-page.php:70
+msgid "Date"
+msgstr ""
+
+#: templates/log-page.php:71
+#: templates/settings-page.php:178
+msgid "User"
+msgstr ""
+
+#: templates/log-page.php:72
+msgid "Action"
+msgstr ""
+
+#: templates/log-page.php:73
+msgid "Theme / plugin"
+msgstr ""
+
+#: templates/log-page.php:74
+msgid "File"
+msgstr ""
+
+#: templates/log-page.php:79
+msgid "No activity recorded yet."
+msgstr ""
+
+#: templates/partials/file-tree.php:17
+#: templates/settings-page.php:23
+msgid "Files"
+msgstr ""
+
+#: templates/partials/file-tree.php:19
+msgid "File actions"
+msgstr ""
+
+#: templates/partials/file-tree.php:57
+msgid "Selected:"
+msgstr ""
+
+#: templates/partials/modals.php:19
+#: templates/partials/modals.php:41
+#: templates/partials/modals.php:53
+#: templates/partials/modals.php:61
+#: templates/partials/modals.php:72
+msgid "Close"
+msgstr ""
+
+#: templates/partials/modals.php:35
+msgid "Backup preview"
+msgstr ""
+
+#: templates/partials/modals.php:42
+msgid "Load into editor"
+msgstr ""
+
+#: templates/partials/modals.php:95
+msgid "Cancel"
+msgstr ""
+
+#: templates/partials/toolbar.php:22
+msgid "File:"
+msgstr ""
+
+#: templates/partials/toolbar.php:30
+msgid "Type"
+msgstr ""
+
+#: templates/partials/toolbar.php:39
+msgid "Item"
+msgstr ""
+
+#: templates/settings-page.php:24
+#: templates/settings-page.php:97
+msgid "Activity log"
+msgstr ""
+
+#: templates/settings-page.php:25
+msgid "Access control"
+msgstr ""
+
+#: templates/settings-page.php:38
+msgid "Settings sections"
+msgstr ""
+
+#: templates/settings-page.php:46
+msgid "Editor appearance"
+msgstr ""
+
+#: templates/settings-page.php:47
+msgid "How the code editor looks for everyone who uses it."
+msgstr ""
+
+#: templates/settings-page.php:50
+msgid "Font size (px)"
+msgstr ""
+
+#: templates/settings-page.php:55
+msgid "Editor theme"
+msgstr ""
+
+#: templates/settings-page.php:64
+msgid "Preview"
+msgstr ""
+
+#: templates/settings-page.php:72
+msgid "Files and backups"
+msgstr ""
+
+#: templates/settings-page.php:73
+msgid "Which files can be edited and how many backups are kept."
+msgstr ""
+
+#: templates/settings-page.php:76
+msgid "Backups per file"
+msgstr ""
+
+#: templates/settings-page.php:78
+msgid "The oldest backups are deleted when this number is passed (1 to 100)."
+msgstr ""
+
+#: templates/settings-page.php:82
+msgid "Allowed file types"
+msgstr ""
+
+#: templates/settings-page.php:84
+msgid "File extensions that can be edited, created and uploaded, separated by commas. Example: php, css, js. Images and fonts can always be uploaded."
+msgstr ""
+
+#: templates/settings-page.php:88
+msgid "Excluded folders"
+msgstr ""
+
+#: templates/settings-page.php:90
+msgid "Folder names that are hidden from the editor and left out of zip downloads. One per line."
+msgstr ""
+
+#: templates/settings-page.php:98
+msgid "Keep a record of who changed what."
+msgstr ""
+
+#: templates/settings-page.php:104
+msgid "Log who saved, created, renamed, moved, deleted or downloaded files"
+msgstr ""
+
+#: templates/settings-page.php:109
+msgid "Keep entries for (days)"
+msgstr ""
+
+#: templates/settings-page.php:111
+msgid "Older entries are deleted automatically (1 to 365)."
+msgstr ""
+
+#: templates/settings-page.php:115
+msgid "View the log"
+msgstr ""
+
+#: templates/settings-page.php:122
+msgid "Access by role"
+msgstr ""
+
+#: templates/settings-page.php:124
+msgid "Administrators always have full access. These settings can only limit access: a user still needs the WordPress capability edit_themes or edit_plugins, and it is not available when DISALLOW_FILE_EDIT is set."
+msgstr ""
+
+#: templates/settings-page.php:131
+msgid "Role"
+msgstr ""
+
+#: templates/settings-page.php:132
+#: templates/settings-page.php:179
+msgid "All"
+msgstr ""
+
+#. translators: %s: role name.
+#. translators: %s: user name.
+#: templates/settings-page.php:147
+#: templates/settings-page.php:198
+#, php-format
+msgid "Select all actions for %s"
+msgstr ""
+
+#. translators: 1: role name, 2: action name.
+#. translators: 1: user name, 2: action name.
+#: templates/settings-page.php:157
+#: templates/settings-page.php:208
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: templates/settings-page.php:170
+msgid "Access by user"
+msgstr ""
+
+#: templates/settings-page.php:171
+msgid "A user entry replaces the role settings for that person. Tick Remove to go back to the role settings."
+msgstr ""
+
+#: templates/settings-page.php:183
+msgid "Remove"
+msgstr ""
+
+#. translators: %s: user name.
+#: templates/settings-page.php:218
+#, php-format
+msgid "Remove %s"
+msgstr ""
+
+#: templates/settings-page.php:227
+msgid "No user has their own permissions yet."
+msgstr ""
+
+#: templates/settings-page.php:231
+msgid "Add a user"
+msgstr ""
+
+#: templates/settings-page.php:232
+msgid "Username or email"
+msgstr ""
+
+#: templates/settings-page.php:233
+msgid "The new user starts with view access only. Save, then tick what they may do."
+msgstr ""
+
+#: templates/settings-page.php:239
+msgid "Save settings"
+msgstr ""
