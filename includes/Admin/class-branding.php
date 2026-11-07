@@ -15,8 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class Branding
  *
- * Everything here is static. The only remote request the plugin makes is the
- * update check (see Updater), which can be turned off in wp-config.php.
+ * Everything here is static. The plugin makes no remote requests.
  */
 class Branding {
 
@@ -56,7 +55,7 @@ class Branding {
 	const REVIEW_URL = 'https://plugins.wpwebguru.com/filesmith-editor/';
 
 	/**
-	 * Where to buy FileSmith Editor Pro. EDIT: set this to the Freemius checkout or pricing page.
+	 * Where to buy FileSmith Editor Pro (the pricing section of the plugin page).
 	 *
 	 * @var string
 	 */
@@ -85,7 +84,13 @@ class Branding {
 			esc_html__( 'Settings', 'filesmith-editor' )
 		);
 
-		return array_merge( array( $settings ), (array) $links );
+		$upgrade = sprintf(
+			'<a href="%s" style="color:#b45309;font-weight:600">%s</a>',
+			esc_url( add_query_arg( 'page', Admin_Menu::UPGRADE_SLUG, admin_url( 'admin.php' ) ) ),
+			esc_html__( 'Upgrade to Pro', 'filesmith-editor' )
+		);
+
+		return array_merge( array( $settings, $upgrade ), (array) $links );
 	}
 
 	/**

@@ -26,8 +26,6 @@ $fsed_tabs = array(
 
 $fsed_logo = \FileSmithEditor\Admin\Branding::image_url( 'filesmith-logo.png' );
 
-$fsed_update = ( new \FileSmithEditor\Updater() )->get_status();
-
 $fsed_sample = "<?php\nfunction fsed_hello() {\n\t// FileSmith Editor\n\treturn 'Hello, world';\n}";
 ?>
 <div class="wrap fsed-wrap fsed-settings">
@@ -212,46 +210,6 @@ $fsed_sample = "<?php\nfunction fsed_hello() {\n\t// FileSmith Editor\n\treturn 
 						<?php /* ?><a class="button button-primary" href="<?php echo esc_url( \FileSmithEditor\Admin\Branding::REVIEW_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Rate this plugin', 'filesmith-editor' ); ?></a><?php */ ?>
 					</p>
 				</div>
-			</div>
-
-			<div class="fsed-card">
-				<h2><?php esc_html_e( 'Updates', 'filesmith-editor' ); ?></h2>
-				<?php if ( 'disabled' === $fsed_update['state'] ) : ?>
-					<p class="fsed-card-intro"><?php esc_html_e( 'Update checks are turned off in wp-config.php.', 'filesmith-editor' ); ?></p>
-				<?php else : ?>
-					<p class="fsed-card-intro">
-						<?php
-						if ( 'available' === $fsed_update['state'] ) {
-							echo esc_html(
-								sprintf(
-									/* translators: 1: new version, 2: installed version. */
-									__( 'Version %1$s is available. You have %2$s.', 'filesmith-editor' ),
-									$fsed_update['version'],
-									FSED_VERSION
-								)
-							);
-						} elseif ( 'current' === $fsed_update['state'] ) {
-							echo esc_html(
-								sprintf(
-									/* translators: %s: installed version. */
-									__( 'You have the latest version (%s).', 'filesmith-editor' ),
-									FSED_VERSION
-								)
-							);
-						} else {
-							esc_html_e( 'The update server could not be reached. Try again later.', 'filesmith-editor' );
-						}
-						?>
-					</p>
-					<?php if ( current_user_can( 'update_plugins' ) ) : ?>
-						<p>
-							<a class="button" href="<?php echo esc_url( $fsed_update['check_url'] ); ?>"><?php esc_html_e( 'Check for updates', 'filesmith-editor' ); ?></a>
-							<?php if ( 'available' === $fsed_update['state'] ) : ?>
-								<a class="button button-primary" href="<?php echo esc_url( $fsed_update['update_url'] ); ?>"><?php esc_html_e( 'Update now', 'filesmith-editor' ); ?></a>
-							<?php endif; ?>
-						</p>
-					<?php endif; ?>
-				<?php endif; ?>
 			</div>
 
 			<div class="fsed-card">

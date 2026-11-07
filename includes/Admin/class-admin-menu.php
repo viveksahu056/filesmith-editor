@@ -34,6 +34,13 @@ class Admin_Menu {
 	const SETTINGS_SLUG = 'filesmith-settings';
 
 	/**
+	 * Upgrade page slug.
+	 *
+	 * @var string
+	 */
+	const UPGRADE_SLUG = 'filesmith-upgrade';
+
+	/**
 	 * Editor page.
 	 *
 	 * @var Editor_Page
@@ -103,5 +110,23 @@ class Admin_Menu {
 			self::SETTINGS_SLUG,
 			array( $this->settings_page, 'render' )
 		);
+
+		add_submenu_page(
+			self::PAGE_SLUG,
+			__( 'Upgrade to FileSmith Pro', 'filesmith-editor' ),
+			'<span class="fsed-menu-upgrade">' . esc_html__( 'Upgrade to Pro', 'filesmith-editor' ) . '</span>',
+			$capability,
+			self::UPGRADE_SLUG,
+			array( $this, 'render_upgrade' )
+		);
+	}
+
+	/**
+	 * Render the upgrade page.
+	 *
+	 * @return void
+	 */
+	public function render_upgrade() {
+		include FSED_PATH . 'templates/upgrade-page.php';
 	}
 }

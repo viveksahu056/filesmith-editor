@@ -73,6 +73,13 @@ class Assets {
 			return;
 		}
 
+		// The upgrade page is static. It only needs its own style.
+		if ( $this->is_page( $hook_suffix, Admin_Menu::UPGRADE_SLUG ) ) {
+			wp_enqueue_style( 'fsed-upgrade', FSED_URL . 'assets/css/upgrade.css', array(), FSED_VERSION );
+
+			return;
+		}
+
 		if ( ! $this->is_page( $hook_suffix, Admin_Menu::PAGE_SLUG ) ) {
 			return;
 		}

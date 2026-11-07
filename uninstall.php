@@ -50,15 +50,9 @@ function fsed_uninstall_site() {
 
 	delete_option( 'fsed_backup_dir' );
 	delete_option( 'fsed_settings' );
-
-	global $wpdb;
-
-	// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Removes the plugin table on uninstall.
-	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}fsed_log" );
 	delete_option( 'fsed_db_version' );
-	delete_transient( 'fsed_log_pruned' );
 	delete_option( 'fsed_version' );
-	delete_site_transient( 'fsed_update_manifest' );
+	delete_transient( 'fsed_log_pruned' );
 }
 
 if ( is_multisite() ) {

@@ -31,11 +31,10 @@ The built-in Theme File Editor and Plugin File Editor are plain. FileSmith Edito
 * Works with themes and plugins from one screen.
 * Settings page: allowed file types, excluded folders, editor font size and theme.
 * Access control by role for view, edit and backups. Roles that cannot use the editor, such as Editor, are shown with a warning and locked.
-* Built-in updates: an alert on the Dashboard, the Plugins screen and the FileSmith screens when a new version is available, with one-click update.
 
 **FileSmith Editor Pro**
 
-Pro adds create, upload, rename, move, duplicate and delete, a right-click menu, trash and restore, compare with disk and a line-by-line backup diff, Format for CSS, JS and JSON, JSON, JS and CSS checks, a site test with automatic rollback, unsaved-draft recovery, zip download, up to 100 backups per file, access by user and an activity log. Pro installs over the free version and keeps your settings and backups.
+Pro adds create, upload, rename, move, duplicate and delete, a right-click menu, trash and restore, compare with disk and a line-by-line backup diff, Format for CSS, JS and JSON, JSON, JS and CSS checks, a site test with automatic rollback, unsaved-draft recovery, zip download, up to 100 backups per file, access by user and an activity log. Pro installs as a separate plugin, takes over from the free one and keeps your settings and backups.
 
 **Built with security in mind**
 
@@ -43,13 +42,12 @@ Pro adds create, upload, rename, move, duplicate and delete, a right-click menu,
 * Respects `DISALLOW_FILE_EDIT` and `DISALLOW_FILE_MODS`, so hosts that turn file editing off stay protected.
 * Paths are validated, so nothing outside the selected theme or plugin folder can be read or changed.
 * Only text based file types can be edited.
-* Updates are downloaded over HTTPS from the author's site only and are checked against a SHA-256 hash before they are installed.
 
 Editing live code is always risky. FileSmith Editor adds a safety net, but you should still keep regular full backups of your site.
 
 **Updates and privacy**
 
-FileSmith Editor is not hosted on WordPress.org, so it checks the author's site (plugins.wpwebguru.com) for new versions, at most once every 12 hours. The check is a plain HTTPS request to a small JSON file. No site address, user data or other information is sent by the plugin. To turn the check off, add `define( 'FSED_DISABLE_UPDATE_CHECK', true );` to `wp-config.php`.
+The free version makes no remote requests and sends no data. To update it, download the latest zip from https://plugins.wpwebguru.com/filesmith-editor/ and upload it over the old version.
 
 == Installation ==
 
@@ -59,7 +57,7 @@ FileSmith Editor is not hosted on WordPress.org, so it checks the author's site 
 4. Go to FileSmith, then Editor, in the admin menu.
 5. Choose Theme or Plugin, pick the item to edit, and select a file from the list.
 
-To upgrade to Pro, upload the Pro zip the same way. WordPress offers to replace the current version. Your settings and backups are kept.
+To upgrade to Pro, install the Pro zip the same way and activate it. The free version steps aside. Your settings and backups are kept.
 
 == Frequently Asked Questions ==
 
@@ -101,11 +99,7 @@ Yes. Click an image in the file list. Images are read-only and up to 5 MB can be
 
 = How do updates work? =
 
-When a new version is released, you see an alert on the Dashboard, the Plugins screen and the FileSmith screens. Click Update now, or use the Check for updates button in FileSmith, Settings, About. The update is installed with the normal WordPress updater, after its SHA-256 hash is verified.
-
-= Can I turn off the update check? =
-
-Yes. Add `define( 'FSED_DISABLE_UPDATE_CHECK', true );` to `wp-config.php`, or use the `fsed_disable_update_check` filter.
+Download the latest zip from the plugin page and upload it in Plugins, Add New Plugin, Upload Plugin. WordPress offers to replace the current version. Your settings and backups are kept.
 
 = How do I keep the backups when I delete the plugin? =
 
@@ -120,13 +114,10 @@ Add `define( 'FSED_KEEP_DATA', true );` to your `wp-config.php` before deleting 
 * `fsed_max_preview_size` filters the maximum size of a previewed image.
 * `fsed_require_backup` decides whether a failed backup stops the save.
 * `fsed_max_backups` filters how many backups are kept for each file (never more than 5 in the free version).
-* `fsed_disable_update_check` turns the update check on or off.
-* `fsed_update_hosts` filters the hosts an update package may be downloaded from.
 
 = Which constants can I set in wp-config.php? =
 
 * `FSED_KEEP_DATA` keeps the settings and backups when the plugin is deleted.
-* `FSED_DISABLE_UPDATE_CHECK` turns off the update check.
 
 == Changelog ==
 
@@ -136,7 +127,6 @@ Add `define( 'FSED_KEEP_DATA', true );` to your `wp-config.php` before deleting 
 * Automatic backups (5 per file), PHP syntax check and changed-on-disk warning.
 * Refresh button and detailed save error messages.
 * Settings and access control by role.
-* Built-in update alerts with one-click update and hash verification.
 
 == Upgrade Notice ==
 

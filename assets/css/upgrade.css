@@ -1,0 +1,106 @@
+/* Upgrade to Pro page. */
+.fsed-upgrade {
+	max-width: 1000px;
+}
+
+.fsed-upgrade-lede {
+	margin: 8px 0 20px;
+	font-size: 15px;
+	color: #50575e;
+}
+
+.fsed-upgrade-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.fsed-upgrade-card {
+	padding: 20px 24px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+}
+
+.fsed-upgrade-card h2 {
+	margin-top: 0;
+	font-size: 16px;
+}
+
+.fsed-upgrade-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.fsed-upgrade-list li {
+	position: relative;
+	padding: 7px 0 7px 26px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.fsed-upgrade-list li:last-child {
+	border-bottom: 0;
+}
+
+.fsed-upgrade-list li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	font-weight: 700;
+	color: #00a32a;
+}
+
+.fsed-upgrade-plans {
+	margin: 0 0 12px;
+	padding: 0;
+	list-style: none;
+}
+
+.fsed-upgrade-plans li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 8px;
+	padding: 10px 14px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.fsed-upgrade-plans li.is-popular {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+.fsed-plan-name {
+	font-weight: 600;
+}
+
+.fsed-plan-price {
+	text-align: right;
+}
+
+.fsed-plan-price strong {
+	font-size: 20px;
+}
+
+.fsed-plan-price small {
+	display: block;
+	color: #646970;
+}
+
+.fsed-upgrade-note {
+	color: #50575e;
+}
+
+.fsed-upgrade-install ol {
+	margin: 0 0 0 20px;
+}
+
+@media (max-width: 782px) {
+	.fsed-upgrade-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

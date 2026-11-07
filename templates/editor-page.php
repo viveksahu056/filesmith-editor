@@ -86,6 +86,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<span aria-hidden="true">&middot;</span>
 		<a href="<?php echo esc_url( \FileSmithEditor\Admin\Branding::REVIEW_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Rate this plugin', 'filesmith-editor' ); ?></a>
 		<span aria-hidden="true">&middot;</span>
+		<a href="<?php echo esc_url( add_query_arg( 'page', \FileSmithEditor\Admin\Admin_Menu::UPGRADE_SLUG, admin_url( 'admin.php' ) ) ); ?>"><?php esc_html_e( 'Upgrade to Pro', 'filesmith-editor' ); ?></a>
+		<span aria-hidden="true">&middot;</span>
 		<a href="<?php echo esc_url( add_query_arg( 'page', \FileSmithEditor\Admin\Admin_Menu::SETTINGS_SLUG, admin_url( 'admin.php' ) ) . '#fsed-panel-about' ); ?>"><?php esc_html_e( 'More plugins', 'filesmith-editor' ); ?></a>
 	</p>
 

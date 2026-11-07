@@ -69,9 +69,6 @@ final class Plugin {
 		// Apply the saved settings through the plugin filters.
 		Settings::register_hooks();
 
-		// Self-hosted updates. Runs everywhere, because WordPress checks for updates in cron too.
-		( new Updater() )->register();
-
 		if ( wp_doing_ajax() ) {
 			$validator = new Files\Path_Validator();
 			$backups   = new Files\Backup_Manager( $validator );
